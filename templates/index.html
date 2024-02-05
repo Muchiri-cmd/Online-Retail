@@ -1,13 +1,156 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Index</title>
+    <title>HomePage</title>
+    <link rel='stylesheet' href='{% static 'assets/css/index.css' %}' type='text/css'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css'>
 </head>
 <body>
-    <h1>Home Page</h1>
+    <div class="header-container">
+        <header>
+            <div class="header">
+                <img id="header-img" src="{% static 'assets/imgs/theme/justshop.jpeg' %}" alt="JustShop-Logo">
+            </div>
+        </header>
+        <nav>
+            <ul class="page-links">
+                <a href=""><li>Home</li></a>
+                <a href=""><li></i>Shop</li></a>
+                <a href=""><li></i>Vendors</li></a>
+                <a href=""><li></i>Pages</li></a>
+                <a href=""><li></i>About</li></a>
+                <a href=""><li></i>Contact Us</li></a>
+            </ul>
+            <ul class="account-links">
+                <a href=""><li><i class="fas fa-heart"></i>Wishlist</li></a>
+                <a href=""><li><i class="fas fa-cart-plus"></i>Cart</li></a>
+                <a href=""><li><i class="fas fa-user"></i>Account</li></a>
+            </ul>
+        </nav>
+    </div>
+    <div class="subheader">
+        <div class="all-categories">
+            <select class="category-dropdown">
+                <option class="category-option">Browse All Categories</option>
+                <option class="category-option">Category 1</option>
+                <option class="category-option">Category 2</option>
+                <option class="category-option">Category 3</option>
+                <!-- Add more options as needed -->
+            </select>
+        </div>
+        <div class="search-bar">
+            <input type"text" class="search-input" placeholder="Search For Products/Categories"><i class="fas fa-search"></i></input>
+        </div>
+        <div class="hotline">
+            <i class="fas fa-headphones"></i><span>+254-113708866</span><br>
+            <span>24/7 Support</span>
+        </div>
+    </div>
+
+    <main class="main-container">
+        <div class="side-bar">
+            <div class="categories-list">
+                <ul>
+                    <span class="special">Categories</span>
+                    <li>
+                        <a href=""> <img src="" alt="" />Phones</a>
+                    </li>
+                    <li>
+                        <a href=""> <img src="" alt="" />Accessories</a>
+                    </li>
+                    <li>
+                        <a href=""> <img src="" alt="" />Clothing & Fashion</a>
+                    </li>
+                    <li>
+                        <a href=""> <img src="" alt="" />Computers</a>
+                    </li>
+                    <li>
+                        <a href=""> <img src="" alt="" />Shoes</a>
+                    </li>
+                    <li>
+                        <a href=""> <img src="" alt="" />Appliances</a>
+                    </li>
+                    <li>
+                        <a href=""> <img src="" alt="" />Digital Products</a>
+                    </li>
+                    <li>
+                        <a href=""> <img src="" alt="" />Fast foods</a>
+                    </li>
+                   
+                   
+                </ul>
+            </div>
+            <div class="ad-banner">
+                <div class="ad-overlaybg"></div>
+                <img class="ad-img" src="{% static 'assets/imgs/shop/GTR2e.jpeg' %}" alt="" />
+                <div class="ad-text">
+                    <span>Offer</span>
+                    <h4>
+                        Save 17% <br /> on <span >Oraimo Watches</span>
+                    </h4>
+                </div>
+            </div>
+        </div>
+        <div class="central-pane">
+            
+            <div class="hero-banner">
+                <div class="overlay-bg"></div>
+                    <img class="hero-img"src="{% static 'assets/imgs/banner/amazingdeals.jpg' %}" alt="">
+                    <div class="overlay-content">
+                        <h1>Best Quality Products</h1>
+                        <p>Major Discounts</p>
+                    </div>
+            </div>
+            <section class="products-section">
+                <h2>Popular Products</h2>
+                <div class="products-container">
+                       
+                    <div class="product-card">
+                        <img class="product-image" src="{% static '/assets/imgs/shop/smarttv.jpeg' %}" alt="">
+                        <div class="product-info">
+                            <span>tvs<span>
+                                <a href=""><p>4K Resolution Smart Tv </p></a>
+                                <span>⭐⭐⭐⭐</span><br>
+                                <span>By <span>Viva </span></span>
+                                <span>$25.00</span>
+                                <button ><i class="fas fa-cart-plus"></i>Add to Cart</button>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+                   
+                
+            </section>
+        </div>
+       
+
+    </main>
+    <section class="newsletter">
+        <div class="newsletter-cover">
+            <div class="newsletter-content">
+                <h2>
+                    Stay home & get your daily <br /> needs from our shop
+                </h2>
+                <p>Shop with us at <span>Just Shop</span></p>
+                <form method=>
+                    <input type="email" placeholder="Your emaill address" />
+                    <button class="btn" type="submit">Subscribe</button>
+                </form>
+            </div>
+            <img class="newsletter-banner"src="{% static 'assets/imgs/banner/banner15.jpeg' %}" alt="" />
+        </div>
+        </div>
+    </section>
+    <footer class="footer-main">
+        
+      
+    </footer>
+    
     
 </body>
 </html>
