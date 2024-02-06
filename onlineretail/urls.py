@@ -23,6 +23,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     #In-app Urls
     path("",include("main.urls")),
+    path("user/",include("UsersApp.urls")),
 ]
 
 if settings.DEBUG:
