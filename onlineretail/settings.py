@@ -42,6 +42,7 @@ INSTALLED_APPS = [
 
     #My Apps
     "main",
+    "UsersApp",
 
    
     
@@ -147,3 +148,4 @@ JAZZMIN_SETTINGS={
     'site_logo':'assets/imgs/theme/justshop.jpeg',
     'copyright':'Proudly By Davis'
 }
+AUTH_USER_MODEL='UsersApp.User'
