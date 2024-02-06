@@ -99,7 +99,7 @@ main{
     padding:0.5em;
 }
 
-.categories-list>ul>li>a:hover{
+.categories-list>ul>li>a:hover,.page-links>a:hover{
     color:orange;
 }
 .special{
@@ -163,23 +163,26 @@ main{
     flex-wrap: wrap;
 }
 .product-card{
-    height:20em;
+    height:auto;
     border:0.5px solid grey;
     margin:1em;
     padding:1.2em;
-    overflow:hidden;
     border-radius: 10px;
+    width:29%;
+    display: inherit;
+    flex-direction: column;
 }
 .product-card:hover{
     transform: scale(1.1);
     transition: 250ms ease;
 }
+.product-info span{
+    white-space: normal;
+    word-wrap: break-word;
+}
 .product-image{
     height:10em;
-}
-.product-info{
-    display: flex;
-    flex-direction: column;
+    object-fit: contain;
 }
 button{
     padding:0.5em;
