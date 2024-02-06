@@ -217,5 +217,19 @@ input[type="email"] {
     background-color: whitesmoke;
 }
 .footer-container{
-    padding:2em;
+    width:95%;
+    margin:auto;
+    display: flex;
+    padding:1em;
+}
+.footer-col-1,.footer-col-2,.footer-col-3{
+    width:33.3%;
+    height:auto;
+   
+}
+.contact-info>li,.footer-list>li{
+    margin-bottom:15px;
+}
+.footer-list>li>a:hover{
+    color:orange;
 }
