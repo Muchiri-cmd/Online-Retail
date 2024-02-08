@@ -1,0 +1,98 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block content %}
+    <main class="main-container">
+        <div class="side-bar">
+            <div class="categories-list">
+                <ul>
+                    <span class="special">Categories</span>
+                    <li>
+                        <a href=""> <img src="" alt="" />Phones</a>
+                    </li>
+                    <li>
+                        <a href=""> <img src="" alt="" />Accessories</a>
+                    </li>
+                    <li>
+                        <a href=""> <img src="" alt="" />Clothing & Fashion</a>
+                    </li>
+                    <li>
+                        <a href=""> <img src="" alt="" />Computers</a>
+                    </li>
+                    <li>
+                        <a href=""> <img src="" alt="" />Shoes</a>
+                    </li>
+                    <li>
+                        <a href=""> <img src="" alt="" />Appliances</a>
+                    </li>
+                    <li>
+                        <a href=""> <img src="" alt="" />Digital Products</a>
+                    </li>
+                    <li>
+                        <a href=""> <img src="" alt="" />Fast foods</a>
+                    </li>   
+                </ul>
+            </div>
+            <div class="ad-banner">
+                <div class="ad-overlaybg"></div>
+                <img class="ad-img" src="{% static 'assets/imgs/shop/GTR2e.jpeg' %}" alt="" />
+                <div class="ad-text">
+                    <span>Offer</span>
+                    <h4>
+                        Save 17% <br /> on <span >Oraimo Watches</span>
+                    </h4>
+                </div>
+            </div>
+        </div>
+        <div class="central-pane">
+            
+            <div class="hero-banner">
+                <div class="overlay-bg"></div>
+                    <img class="hero-img"src="{% static 'assets/imgs/banner/amazingdeals.jpg' %}" alt="">
+                    <div class="overlay-content">
+                        <h1>Best Quality Products</h1>
+                        <p>Major Discounts</p>
+                    </div>
+            </div>
+            <section class="products-section">
+                <h2>Popular Products</h2>
+                <div class="products-container">
+                    
+                    
+                    <div class="product-card">
+                        <div class="product-img">
+                            <img class="product-image" src="{% static '/assets/imgs/shop/smarttv.jpeg' %}" alt="">
+                        </div>
+                        <div class="product-info">
+                            <span>tvs <span>
+                            <a href=""><p>4K Resolution Smart Tv </p></a>
+                            <span>⭐⭐⭐⭐</span><br>
+                            <span>By <span>Viva </span></span>
+                            <span>$25.00</span>
+                            <button ><i class="fas fa-cart-plus"></i>Add to Cart</button>
+                        </div>              
+                    </div>
+                   
+                   
+                </div>
+                   
+            </section>
+        </div>
+    </main>
+    <section class="newsletter">
+        <div class="newsletter-cover">
+            <div class="newsletter-content">
+                <h2>
+                    Stay home & get your daily <br /> needs from our shop
+                </h2>
+                <p>Shop with us at <span>Just Shop</span></p>
+                <form method=>
+                    <input type="email" placeholder="Your emaill address" />
+                    <button class="btn" type="submit">Subscribe</button>
+                </form>
+            </div>
+            <img class="newsletter-banner"src="{% static 'assets/imgs/banner/banner15.jpeg' %}" alt="" />
+        </div>
+        </div>
+    </section>
+{% endblock content%}

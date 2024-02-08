@@ -1,18 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base/base.html" %}
+{% load static %}
+{% block content %}
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign In</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign-Up</title>
+    <link href="{% static 'assets/css/signup.css' %}" rel="stylesheet" type="text/css">
 </head>
 <body>
-    <form method="post">
-        {% csrf_token %}
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-        <button type="submit">Sign In</button>
-    </form>
-</body>
-</html>
+    <h1>Login</h1>
+    <div class="main-container">
+        
+        <div class="side-bar">
+            <img id="sidebar-img" src="{% static 'assets/imgs/banner/signup1.jpeg/' %}" alt="">
+            <div class="side-bar-logo">
+                <img id="logo-image" src="{% static 'assets/imgs/theme/justshop.jpeg' %}" alt="">
+            </div>
+        </div>
+        <div class="form-content">
+            <div class="form-container">
+                <form method="POST" id="SignUpForm">
+                    {% csrf_token %}
+                    <div class="input-div"><label for="email" >Email</label>
+                        <input type="email" id="email" name="email" placeholder="Enter Your registered email" required>
+                    </div> <div class="input-div"><label for="password">PASSWORD</label>
+                        <input type="password" id="password1" name="password" required placeholder="Enter Your password ">
+                    </div>
+                </form>
+            </div>
+           <button type="submit" form="SignUpForm">Login</button>
+            <p>Dont have an account? <a href="{% url 'UsersApp:signup' %}"><span>Create Here</span></a></p>
+
+        </div>
+    </div>
+ 
+{% endblock content%}

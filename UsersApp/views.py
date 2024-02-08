@@ -28,12 +28,11 @@ def sign_up_view(request):
     return render(request,"UsersApp/sign-up.html",context)
 
 def sign_in_view(request):
-    if request.user.is_authenticated:
-        return redirect("main:index")
+    #if request.user.is_authenticated:
+        #return redirect("main:index")
     
     if request.method == "POST": 
         email = request.POST['email']
-        print(email)
         password = request.POST['password']
 
         try:

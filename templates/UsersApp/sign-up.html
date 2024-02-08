@@ -1,5 +1,34 @@
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">SignUp</button>
-</form>
+{% extends "base/base.html" %}
+{% load static %}
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign-Up</title>
+    <link href="{% static 'assets/css/signup.css' %}" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <h1>Create Account</h1>
+    <div class="main-container">
+        
+        <div class="side-bar">
+            <img id="sidebar-img" src="{% static 'assets/imgs/banner/signup1.jpeg/' %}" alt="">
+            <div class="side-bar-logo">
+                <img id="logo-image" src="{% static 'assets/imgs/theme/justshop.jpeg' %}" alt="">
+            </div>
+        </div>
+        <div class="form-content">
+            <div class="form-container">
+                <form method="POST" id="SignUpForm">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                </form>
+            </div>
+           <button type="submit" form="SignUpForm">Create Account</button>
+            <p>Already have an account? <a href="{% url 'UsersApp:signin' %}"><span>Login</span></a></p>
+
+        </div>
+    </div>
+ 
+{% endblock content%}
