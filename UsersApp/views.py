@@ -38,14 +38,22 @@ def sign_in_view(request):
         try:
             # Check if user exists
             user = User.objects.get(email=email)
+           
             if user is not None:
+                authenticated_user=authenticate(request,email=email,password=password)
                 print("User account present")
-                login(request, user)
-                messages.success(request, "You're successfully logged in")
-                return redirect("main:index")
-            else:
-                print("Not registered")
+                if authenticated_user is not None:
+                    print("User authenticated successfully")
+                    login(request, user)
+                    messages.success(request, "You're successfully logged in")
+                    return redirect("main:index")
+                else:
+                    print("authentication failed")
+        except User.DoesNotExist:
+            print("User not registered")
+            messages.warning(request, "User not registered.")
         except:
+            print("Something went wrong. Please try again.")
             messages.warning(request, "Something went wrong. Please try again.")
 
     return render(request, "UsersApp/sign-in.html")
