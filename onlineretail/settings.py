@@ -149,3 +149,4 @@ JAZZMIN_SETTINGS={
     'copyright':'Proudly By Davis'
 }
 AUTH_USER_MODEL='UsersApp.User'
+LOGIN_URL='UsersApp:signin'

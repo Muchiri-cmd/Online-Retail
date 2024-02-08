@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from UsersApp.forms import *
 from django.contrib import messages
-from django.contrib.auth import authenticate,login
+from django.contrib.auth import authenticate,login,logout
 
 # Create your views here.
 def sign_up_view(request):
@@ -57,3 +57,8 @@ def sign_in_view(request):
             messages.warning(request, "Something went wrong. Please try again.")
 
     return render(request, "UsersApp/sign-in.html")
+
+def logout_view(request):
+    logout(request)
+    messages.success(request,"Successfully logged out")
+    return redirect("UsersApp:signin")
