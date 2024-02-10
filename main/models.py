@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils.html import mark_safe
 from UsersApp.models import *
-from ckeditor_uploader.fields import RichTextUploadingField
+from django_ckeditor_5.fields import CKEditor5Field
 
 #creates directory structure to store user specific files
 STATUS=(
@@ -65,7 +65,7 @@ class Product(models.Model):
     title=models.CharField(max_length=100)
     image=models.ImageField(upload_to=user_dir_path)
     retailer=models.ForeignKey(Retailer,on_delete=models.SET_NULL,null=True,related_name="products")
-    description=RichTextUploadingField(null="true",blank="True")
+    description=CKEditor5Field('Text',config_name='default',null="true",blank="True")
     category=models.ForeignKey(Category,on_delete=models.SET_NULL,null=True,related_name="category_products")
     base_price=models.DecimalField(max_digits=999999999,decimal_places=2)
     sale_price=models.DecimalField(max_digits=999999999,decimal_places=2)

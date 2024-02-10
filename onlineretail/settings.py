@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     "main",
     "UsersApp",
 
+    #3rd party
+    'django_ckeditor_5',
    
     
 ]
@@ -150,3 +152,21 @@ JAZZMIN_SETTINGS={
 }
 AUTH_USER_MODEL='UsersApp.User'
 LOGIN_URL='UsersApp:signin'
+CKEDITOR_UPLOAD_PATH='uploads/'
+CKEDITOR_5_CONFIGS = {
+    'default': {
+        'toolbar': ['heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote', 'insertTable', 'mediaEmbed', 'undo', 'redo'],
+        'image': {
+            'toolbar': ['imageTextAlternative', '|', 'imageStyle:alignLeft', 'imageStyle:full', 'imageStyle:alignRight'],
+            'styles': [
+                'full',
+                'alignLeft',
+                'alignRight'
+            ]
+        },
+        'table': {
+            'contentToolbar': ['tableColumn', 'tableRow', 'mergeTableCells']
+        },
+        'language': 'en'
+    }
+}
