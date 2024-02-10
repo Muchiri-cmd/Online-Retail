@@ -2,6 +2,7 @@ from django.db import models
 from django.utils.html import mark_safe
 from UsersApp.models import *
 from django_ckeditor_5.fields import CKEditor5Field
+import uuid
 
 #creates directory structure to store user specific files
 STATUS=(
@@ -19,7 +20,7 @@ STOCK_STATUS=(
 def user_dir_path(instance,filename):
     return 'user_{0}/{1}'.format(instance.user.id,filename)
 class Category(models.Model):
-    category_id=models.UUIDField(unique=True,max_length=20)
+    category_id=models.UUIDField(unique=True,default=uuid.uuid4)
     title=models.CharField(max_length=100)
     image=models.ImageField(upload_to="category")#define dir within media dir where images stored
 
@@ -35,7 +36,7 @@ class Category(models.Model):
             return self.title
     
 class Retailer(models.Model):
-     retailer_id=models.UUIDField(unique=True,max_length=20)
+     retailer_id=models.UUIDField(unique=True, default=uuid.uuid4)
      title=models.CharField(max_length=100)
      image=models.ImageField(upload_to=user_dir_path)
      description=models.CharField(null=True,max_length=100,blank=True,default="Simply The best")
@@ -61,7 +62,7 @@ class Retailer(models.Model):
      
      
 class Product(models.Model):
-    product_id=models.UUIDField(unique=True,max_length=100)
+    product_id=models.UUIDField(unique=True, default=uuid.uuid4)
     title=models.CharField(max_length=100)
     image=models.ImageField(upload_to=user_dir_path)
     retailer=models.ForeignKey(Retailer,on_delete=models.SET_NULL,null=True,related_name="products")
