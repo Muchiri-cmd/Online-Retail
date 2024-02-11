@@ -6,13 +6,13 @@ class CategoryAdmin(admin.ModelAdmin):
     list_display=['title','category_image']
 
 class RetailerAdmin(admin.ModelAdmin):
-    list_display=['title','image','storefront_image','rating','user']
+    list_display=['title','retailer_image','rating','user']
 
 class ProductImagesAdmin(admin.ModelAdmin):
     model=ProductImages
 class ProductAdmin(admin.ModelAdmin):
     inline=[ProductImagesAdmin]
-    list_display=['title','image','sale_price','category','retailer','featured','product_status','user']
+    list_display=['title','product_image','sale_price','category','retailer','featured','product_status']
 
 admin.site.register(Category,CategoryAdmin)
 admin.site.register(Retailer,RetailerAdmin)

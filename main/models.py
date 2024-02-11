@@ -56,6 +56,7 @@ class Retailer(models.Model):
 
      def retailer_image(self):
         return mark_safe('<img src="%s" width="50" height="50" >' % (self.image.url))
+     
 
      def __str__(self):
       return self.title
@@ -74,12 +75,12 @@ class Product(models.Model):
     product_status=models.CharField(choices=STATUS,max_length=100,default="inreview")
     warranty_period=models.CharField(max_length=100,default="100")
     featured=models.BooleanField(default=False)
-    specifications=models.TextField(max_length=100)
+    specifications=models.TextField(max_length=100,null=True,blank=True)
     #If product is digital no addressing stuff just email and payment
     digital=models.BooleanField(default=False)
 
     #User model
-    user=models.ForeignKey(User,on_delete=models.SET_NULL,null=True,related_name="user_products")
+    user=models.ForeignKey(User,on_delete=models.SET_NULL,null=True)
 
     
     class Meta:
