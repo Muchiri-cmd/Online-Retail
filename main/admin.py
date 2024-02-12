@@ -6,7 +6,7 @@ class CategoryAdmin(admin.ModelAdmin):
     list_display=['title','category_image']
 
 class RetailerAdmin(admin.ModelAdmin):
-    list_display=['title','retailer_image','rating','user']
+    list_display=['title','retailer_image','rating','user','date']
 
 class ProductImagesAdmin(admin.ModelAdmin):
     model=ProductImages

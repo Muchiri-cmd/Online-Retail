@@ -19,6 +19,7 @@ STOCK_STATUS=(
 
 def user_dir_path(instance,filename):
     return 'user_{0}/{1}'.format(instance.user.id,filename)
+
 class Category(models.Model):
     category_id=models.UUIDField(unique=True,default=uuid.uuid4)
     title=models.CharField(max_length=100)
@@ -38,7 +39,7 @@ class Category(models.Model):
 class Retailer(models.Model):
      retailer_id=models.UUIDField(unique=True, default=uuid.uuid4)
      title=models.CharField(max_length=100)
-     image=models.ImageField(upload_to=user_dir_path)
+     image=models.ImageField(upload_to=user_dir_path,null=True)
      description=models.CharField(null=True,max_length=100,blank=True,default="Simply The best")
      rating=models.CharField(max_length=100,default="100")
      contact=models.CharField(max_length=100)
@@ -46,10 +47,10 @@ class Retailer(models.Model):
      address=models.CharField(max_length=100)
      shipping_time=models.CharField(max_length=100)
 
-     #Retailer User model
-     user=models.ForeignKey(User,on_delete=models.SET_NULL,null=True)
+     #Retailer User model                                                               
+     user=models.ForeignKey(User,on_delete=models.SET_NULL,null=True)#on_delete=models.CASCADE,null=False
      date=models.DateTimeField(auto_now_add=True,null=True,blank=True)
-     storefront_image=models.ImageField(upload_to=user_dir_path)
+     storefront_image=models.ImageField(upload_to=user_dir_path,null=True)
 
      class Meta:
           verbose_name_plural="Retailers"

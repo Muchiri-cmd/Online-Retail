@@ -58,20 +58,21 @@
                 <h2>Popular Products</h2>
                 <div class="products-container">
                     
-                    
+                    {% for product in products %}
                     <div class="product-card">
                         <div class="product-img">
-                            <img class="product-image" src="{% static '/assets/imgs/shop/smarttv.jpeg' %}" alt="">
+                            <img class="product-image" src="{{product.image.url}}" alt="">
                         </div>
                         <div class="product-info">
-                            <span>tvs <span>
-                            <a href=""><p>4K Resolution Smart Tv </p></a>
+                            <span>{{product.category}} <span>
+                            <a href=""><p>{{product.title}}</p></a>
                             <span>⭐⭐⭐⭐</span><br>
-                            <span>By <span>Viva </span></span>
-                            <span>$25.00</span>
+                            <span>By <span>{{product.retailer}} </span></span>
+                            <span>${{product.sale_price}}</span>
                             <button ><i class="fas fa-cart-plus"></i>Add to Cart</button>
                         </div>              
                     </div>
+                    {%endfor %}
                    
                    
                 </div>
