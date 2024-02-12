@@ -1,0 +1,7 @@
+{% extends "base/base.html" %}
+{% load static %}
+{%block content%}
+{%for retailer in retailers %}
+    <a href="{% url 'main:retailerdetails' retailer.id%}"><li>{{retailer}}</li></a>
+{%endfor %}
+{%endblock content%}

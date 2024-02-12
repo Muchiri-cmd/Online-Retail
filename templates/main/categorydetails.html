@@ -1,0 +1,17 @@
+{% extends "base/base.html" %}
+{% load static %}
+{%block content%}
+{%for category_product in category_products%}
+    <li>{{category_product.title}}</li>
+    <img src="{{category_product.image.url}}" alt="">
+    <p>Description: {{ category_product.description }}</p>
+    <p>Base Price: {{ category_product.base_price }}</p>
+    <p>Sale Price: {{ category_product.sale_price }}</p>
+    <p>Stock Status: {{ category_product.stock_status }}</p>
+    <p>Product Status: {{ category_product.product_status }}</p>
+    <p>Warranty Period: {{ category_product.warranty_period }}</p>
+    <p>Featured: {{ category_product.featured }}</p>
+    <p>Specifications: {{ category_product.specifications }}</p>
+
+{%endfor %}
+{%endblock content%}

@@ -1,0 +1,16 @@
+{% extends "base/base.html" %}
+{% load static %}
+{%block content%}
+{%for retailer in retailers %}
+    <h1>{{retailer.title}}</h1>
+    <img src="{{retailer.storefront_image.url}}" alt="">
+    <p>{{retailer.description}}</p>
+    <p>{{retailer.rating}}</p>
+    <p>{{retailer.contact}}</p>
+    <p>{{retailer.shiiping_time}}</p>
+    <img src="{{retailer.image.url}}" alt="">
+
+    
+
+{%endfor %}
+{%endblock content%}

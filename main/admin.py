@@ -3,7 +3,7 @@ from .models import *
 
 # Register your models here.
 class CategoryAdmin(admin.ModelAdmin):
-    list_display=['title','category_image']
+    list_display=['title','category_image','category_id','id']
 
 class RetailerAdmin(admin.ModelAdmin):
     list_display=['title','retailer_image','rating','user','date']
