@@ -2,13 +2,22 @@
 {% load static %}
 {%block content%}
 {%for retailer in retailers %}
-    <h1>{{retailer.title}}</h1>
-    <img src="{{retailer.storefront_image.url}}" alt="">
-    <p>{{retailer.description}}</p>
-    <p>{{retailer.rating}}</p>
-    <p>{{retailer.contact}}</p>
-    <p>{{retailer.shiiping_time}}</p>
-    <img src="{{retailer.image.url}}" alt="">
+{% for retailer in retailers %}
+    <div class="retailer-details">
+    <a href="{% url 'main:retailerdetails' retailer.id %}">
+        <div class="retailer-info">
+        <h2>{{ retailer.title }}</h2>
+        <img src="{{ retailer.image.url }}" alt="">
+        <p>Description: {{ retailer.description }}</p>
+        <p>Rating: {{ retailer.rating }}</p>
+        <p>Contact: {{ retailer.contact }}</p>
+        <p>Return Time: {{ retailer.return_time }}</p>
+        <p>Address: {{ retailer.address }}</p>
+        <p>Shipping Time: {{ retailer.shipping_time }}</p>
+        </div>
+    </a>
+</div>
+{% endfor %}
 
     
 

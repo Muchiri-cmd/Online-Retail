@@ -1,0 +1,22 @@
+{% extends "base/base.html" %}
+{% load static %}
+{%block content%}
+
+{%for product in products%}
+
+<div class="product-card">
+    <div class="product-img">
+        <img class="product-image" src="{{product.image.url}}" alt="">
+    </div>
+    <div class="product-info">
+        <span>{{product.category}} <span>
+        <a href=""><p>{{product.title}}</p></a>
+        <span>⭐⭐⭐⭐</span><br>
+        <span>By <span>{{product.retailer}} </span></span>
+        <span>${{product.sale_price}}</span>
+        <button ><i class="fas fa-cart-plus"></i>Add to Cart</button>
+    </div>              
+</div>
+   
+{%endfor %}
+{%endblock content%}

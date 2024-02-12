@@ -2,16 +2,28 @@
 {% load static %}
 {%block content%}
 {%for category_product in category_products%}
-    <li>{{category_product.title}}</li>
-    <img src="{{category_product.image.url}}" alt="">
-    <p>Description: {{ category_product.description }}</p>
-    <p>Base Price: {{ category_product.base_price }}</p>
-    <p>Sale Price: {{ category_product.sale_price }}</p>
-    <p>Stock Status: {{ category_product.stock_status }}</p>
-    <p>Product Status: {{ category_product.product_status }}</p>
-    <p>Warranty Period: {{ category_product.warranty_period }}</p>
-    <p>Featured: {{ category_product.featured }}</p>
-    <p>Specifications: {{ category_product.specifications }}</p>
+<div class="product-card">
+    <div class="product-img">
+        <img class="product-image" src="{{ category_product.image.url }}" alt="">
+    </div>
+    <div class="product-info">
+        <span>{{ category_product.category }}</span>
+        <a href=""><p>{{ category_product.title }}</p></a>
+        <span>⭐⭐⭐⭐</span><br>
+        <span>By <span>{{ category_product.retailer }}</span></span>
+        <span>${{ category_product.sale_price }}</span>
+        <button><i class="fas fa-cart-plus"></i>Add to Cart</button>
+        <p>Description: {{ category_product.description }}</p>
+        <p>Base Price: {{ category_product.base_price }}</p>
+        <p>Sale Price: {{ category_product.sale_price }}</p>
+        <p>Stock Status: {{ category_product.stock_status }}</p>
+        <p>Product Status: {{ category_product.product_status }}</p>
+        <p>Warranty Period: {{ category_product.warranty_period }}</p>
+        <p>Featured: {{ category_product.featured }}</p>
+        <p>Specifications: {{ category_product.specifications }}</p>
+    </div>
+</div>
+
 
 {%endfor %}
 {%endblock content%}

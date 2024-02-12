@@ -1,7 +1,17 @@
 {% extends "base/base.html" %}
 {% load static %}
 {%block content%}
-{%for retailer in retailers %}
-    <a href="{% url 'main:retailerdetails' retailer.id%}"><li>{{retailer}}</li></a>
-{%endfor %}
+{% for retailer in retailers %}
+  <div class="retailer-details">
+    <a href="{% url 'main:retailerdetails' retailer.id %}">
+      <div class="retailer-info">
+        <h2>{{ retailer.title }}</h2>
+        <img src="{{ retailer.image.url }}" alt="">
+        <p>Description: {{ retailer.description }}</p>
+       
+      </div>
+    </a>
+  </div>
+{% endfor %}
+
 {%endblock content%}

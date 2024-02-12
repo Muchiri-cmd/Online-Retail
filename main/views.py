@@ -39,3 +39,10 @@ def retailer_detail_view(request,id):
       "retailers":retailers,
    }
    return render(request,"main/retailer_details.html",context)
+
+def all_products_view(request):
+   products=Product.objects.filter(product_status="published")
+   context={
+      "products":products,
+   }
+   return render(request,"main/products.html",context)
