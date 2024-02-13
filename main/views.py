@@ -46,3 +46,4 @@ def all_products_view(request):
       "products":products,
    }
    return render(request,"main/products.html",context)
+

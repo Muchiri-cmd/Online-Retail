@@ -44,9 +44,9 @@
         <div class="all-categories">
             <select class="category-dropdown">
                 <option class="category-option">Browse All Categories</option>
-                <option class="category-option">Category 1</option>
-                <option class="category-option">Category 2</option>
-                <option class="category-option">Category 3</option>
+                {% for category in categories %}
+                <option class="category-option">{{category.title}}</option>
+                {%endfor%}
                 <!-- Add more options as needed -->
             </select>
         </div>
