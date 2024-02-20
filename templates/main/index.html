@@ -5,33 +5,14 @@
     <main class="main-container">
         <div class="side-bar">
             <div class="categories-list">
-                <ul>
                     <span class="special">Categories</span>
-                    <li>
-                        <a href=""> <img src="" alt="" />Phones</a>
-                    </li>
-                    <li>
-                        <a href=""> <img src="" alt="" />Accessories</a>
-                    </li>
-                    <li>
-                        <a href=""> <img src="" alt="" />Clothing & Fashion</a>
-                    </li>
-                    <li>
-                        <a href=""> <img src="" alt="" />Computers</a>
-                    </li>
-                    <li>
-                        <a href=""> <img src="" alt="" />Shoes</a>
-                    </li>
-                    <li>
-                        <a href=""> <img src="" alt="" />Appliances</a>
-                    </li>
-                    <li>
-                        <a href=""> <img src="" alt="" />Digital Products</a>
-                    </li>
-                    <li>
-                        <a href=""> <img src="" alt="" />Fast foods</a>
-                    </li>   
-                </ul>
+                    {%for category in categories%}
+                    <ul>
+                        <li>
+                            <a href="{% url 'main:categorydetails' category.id %}">{{category.title}}</a>
+                        </li>
+                    </ul>
+                    {%endfor %}
             </div>
             <div class="ad-banner">
                 <div class="ad-overlaybg"></div>
@@ -64,12 +45,13 @@
                             <img class="product-image" src="{{product.image.url}}" alt="">
                         </div>
                         <div class="product-info">
-                            <span>{{product.category}} <span>
-                            <a href=""><p>{{product.title}}</p></a>
-                            <span>⭐⭐⭐⭐</span><br>
-                            <span>By <span>{{product.retailer}} </span></span>
-                            <span>${{product.sale_price}}</span>
+                            <span>#{{product.category}} <span>
+                            <a href=""><h5>{{product.title}}</h5></a>
+                            <span>⭐⭐⭐⭐(4.0)</span><br>
+                            <span>By <span><a class="retailer-title" href="{% url 'main:retailerdetails' product.retailer.id %}">{{product.retailer}}</a> </span></span><br>
+                            <span class="price">${{product.sale_price}}</span>
                             <button ><i class="fas fa-cart-plus"></i>Add to Cart</button>
+                            <button><i class="fas fa-heart"></i></button>
                         </div>              
                     </div>
                     {%endfor %}

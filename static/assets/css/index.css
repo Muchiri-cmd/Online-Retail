@@ -10,7 +10,9 @@ textarea {
   font-family: inherit;
   font-size: 100%;
 }
-
+body{
+    font-size:17px;
+}
 li{
     list-style-type: none;
 }
@@ -48,6 +50,10 @@ a{
     color:black;
     margin-right:1.5em;
 }
+a:hover{
+    text-decoration: none;
+    color:orange;
+}
 .subheader{
     display: flex;
     height:3em;
@@ -74,11 +80,21 @@ a{
     height:100%;
     margin:0 1em;
     text-align: center;
+    border-radius:5px;
 }
-main{
-    height:auto;
-    padding:1em;
+
+.account-links .dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 5px;
 }
+
+.account-links .dropdown:hover .dropdown-menu {
+    display: block;
+}
+
 .main-container{
     display: flex;
 }
@@ -94,9 +110,10 @@ main{
 .categories-list{
     height:auto;
     border-radius: 10px;
-    box-shadow: 0 0 15px 15px whitesmoke;
+    box-shadow: 0 0 1px 1px orange;
     width:auto;
     padding:1em;
+    margin:1em;
 }
 .categories-list>ul>li{
     margin: 1.2em;
@@ -146,6 +163,7 @@ main{
 }
 .ad-banner{
     position: relative;
+    margin:1em;
 
 }
 .ad-img{
@@ -165,23 +183,36 @@ main{
     z-index: 1;
     border-radius: 10px;
 }
+.products-section{
+    padding:1em;
+}
 .products-container{
     display: flex;
+  
     flex-wrap: wrap;
+}
+.product-img{
+    display: flex;
+    justify-content: center;
+   
 }
 .product-card{
     height:auto;
-    border:0.5px solid grey;
+    border:0.5px solid orange;
     margin:1em;
     padding:1.2em;
     border-radius: 10px;
     width:29%;
     display: inherit;
     flex-direction: column;
+    gap:1em;
 }
 .product-card:hover{
-    transform: scale(1.1);
+    transform: scale(1.05);
     transition: 250ms ease;
+}
+.product-info{
+    margin:1em;
 }
 .product-info span{
     white-space: normal;
@@ -189,10 +220,19 @@ main{
 }
 .product-image{
     height:10em;
-    object-fit: contain;
+    object-fit: cover;
+    
+}
+.price{
+    font-size:1.5em;
+    color:orange;
+}
+.retailer-title{
+    color:pink;
 }
 button{
     padding:0.5em;
+    border-radius:.3em;
 }
 .newsletter{
     margin:auto;

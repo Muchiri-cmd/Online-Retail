@@ -6,9 +6,10 @@ from .models import *
 @login_required
 def index_view(request):
    products=Product.objects.filter(featured=True,product_status="published")
-   
+   categories=Category.objects.all()
    context={
       "products":products,
+      "categories":categories,
    }
    return render(request,'main/index.html',context)
 

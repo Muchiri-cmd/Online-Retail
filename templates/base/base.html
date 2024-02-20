@@ -33,10 +33,15 @@
                 <a href=""><li></i>Contact Us</li></a>
             </ul>
             <ul class="account-links">
-                <a href=""><li><i class="fas fa-heart"></i>Wishlist</li></a>
-                <a href=""><li><i class="fas fa-cart-plus"></i>Cart</li></a>
-                <a href=""><li><i class="fas fa-user"></i>Account</li></a>
-                <a href="{% url 'UsersApp:logout' %}"></i>Logout</li></a>
+                <li><a href=""><i class="fas fa-heart"></i>Wishlist</a></li>
+                <li><a href=""><i class="fas fa-cart-plus"></i>Cart</a></li>
+                <li class="dropdown">
+                    <a href="#"><i class="fas fa-user"></i>Account</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{% url 'UsersApp:logout' %}"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
+                    </ul>
+                </li>
+               
             </ul>
         </nav>
     </div>
@@ -51,7 +56,7 @@
             </select>
         </div>
         <div class="search-bar">
-            <input type"text" class="search-input" placeholder="Search For Products/Categories"><i class="fas fa-search"></i></input>
+            <input type"search" class="search-input" placeholder="Search For Products/Categories"><i class="fas fa-search"></i></input>
         </div>
         <div class="hotline">
             <i class="fas fa-headphones"></i><span>+254-113708866</span><br>
