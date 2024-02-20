@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block content %}
+
     <main class="main-container">
         <div class="side-bar">
             <div class="categories-list">
@@ -62,20 +63,5 @@
             </section>
         </div>
     </main>
-    <section class="newsletter">
-        <div class="newsletter-cover">
-            <div class="newsletter-content">
-                <h2>
-                    Stay home & get your daily <br /> needs from our shop
-                </h2>
-                <p>Shop with us at <span>Just Shop</span></p>
-                <form method=>
-                    <input type="email" placeholder="Your emaill address" />
-                    <button class="btn" type="submit">Subscribe</button>
-                </form>
-            </div>
-            <img class="newsletter-banner"src="{% static 'assets/imgs/banner/banner15.jpeg' %}" alt="" />
-        </div>
-        </div>
-    </section>
+   
 {% endblock content%}

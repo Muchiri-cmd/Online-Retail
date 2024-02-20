@@ -4,11 +4,11 @@
     box-sizing: border-box;
 }
 .main-container{
-    height:30em;
     width:85%;
     margin: 5em 5em;
     display: flex;
     padding:0.5em;
+    outline:2px solid whitesmoke;
 }
 .side-bar{
     height:auto;
@@ -19,7 +19,6 @@
     width:70%;
     padding:3em;
     border-radius: 5px;
-    height:auto;
 }
 #sidebar-img{
     width:100%;
@@ -40,24 +39,22 @@
 #logo-image{
     height:5em;
 }
-input{
-  font-family: inherit;
-  font-size: 100%;
+.input-div input{
   padding: 5px; margin: auto;
   border:2px solid #E5E7EB;
   border-radius:5px;
-  width:60%;
+  width:30em;
 }
-input:active{
+.input-div input:active{
     border:1px solid blue;
 }
-input:focus{
+.input-div input:focus{
     outline:1px solid blue;
 }
-input + span {
+.input-div input + span {
     position:relative;
 }
-input:required + span::after{
+.input-div input:required + span::after{
     position:absolute;
     font-size:0.5em;
     content:"required";
@@ -68,23 +65,19 @@ input:required + span::after{
     top:-58px;
     left:250px;
 }
-input::placeholder{
+.input-div input::placeholder{
     font-size:1em;
     color:grey;
 }
-input:valid{
+.input-div input:valid{
     outline:1.5px solid green;
 }
 form{
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
-    gap:2em;
+    gap:2em
 }
-input[type="email"]{
-    width:80%;
-    padding:5px;
-}
+
 button{
     color:white;
     background-color: #596D48;

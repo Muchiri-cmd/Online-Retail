@@ -16,7 +16,6 @@ body{
 li{
     list-style-type: none;
 }
-
 .header{
     height:6em;
     
@@ -66,6 +65,7 @@ a:hover{
     width: 100%;
     height:100%;
     background-color: whitesmoke;
+    border-radius:5px;
 }
 .search-bar{
     display:inherit;
@@ -187,9 +187,8 @@ a:hover{
     padding:1em;
 }
 .products-container{
-    display: flex;
-  
-    flex-wrap: wrap;
+   display: grid;
+   grid-template-columns: repeat(auto-fit,350px);
 }
 .product-img{
     display: flex;
@@ -202,9 +201,6 @@ a:hover{
     margin:1em;
     padding:1.2em;
     border-radius: 10px;
-    width:29%;
-    display: inherit;
-    flex-direction: column;
     gap:1em;
 }
 .product-card:hover{
@@ -255,14 +251,7 @@ button{
     object-fit:cover;
     border-radius: 10px;
 }
-input[type="email"] {
-    width: 100%;
-    max-width: 300px;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc; 
-    border-radius: 5px; 
-}
+
 .footer-main{
     background-color: whitesmoke;
 }
@@ -282,4 +271,16 @@ input[type="email"] {
 }
 .footer-list>li>a:hover{
     color:orange;
+}
+.category-banner{
+    height:15em;
+    margin:1.5em;
+    border-radius:10px;
+    background-color: antiquewhite;
+    display: flex;
+    align-items: center;
+    padding:2em;
+}
+.banner-icon i{
+    font-size:2em;
 }
