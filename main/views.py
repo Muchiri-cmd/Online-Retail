@@ -36,8 +36,11 @@ def retailers_view(request):
 
 def retailer_detail_view(request,id):
    retailers=Retailer.objects.filter(id=id)
+   retailer=Retailer.objects.get(id=id)
+   products=Product.objects.filter(retailer=retailer)
    context={
       "retailers":retailers,
+      "products":products,
    }
    return render(request,"main/retailer_details.html",context)
 

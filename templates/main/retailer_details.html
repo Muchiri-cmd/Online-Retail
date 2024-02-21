@@ -1,7 +1,108 @@
 {% extends "base/base.html" %}
 {% load static %}
 {%block content%}
-{%for retailer in retailers %}
+
+{% for retailer in retailers %}
+<div class="retailerdetails-main">
+    <div class="rd-banner">
+        <div class="retailer-image">
+            <img class="retailer-image" src="{{ retailer.image.url }}" alt="">
+        </div>
+        <div class="retailer-info-div">
+            <div class="retailer-about">
+                <span>{{retailer.description}}</span>
+                <span>⭐⭐⭐⭐(4.0)</span><br>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, earum.</p>
+            </div>
+            <div class="retailer-address">
+                <p></p></span><i class="fas fa-location"></i><strong>Address: </strong> <span>{{retailer.address}}</span></p>
+                <p><i class="fas fa-phone"></i><strong>Call Us: </strong><span>+{{retailer.contact}}</span></p>
+            </div>
+            <div class="retailer-socials">
+                <p>Follow Us</p>
+                <i class="fab fa-facebook"></i>
+                <i class="fab fa-twitter"></i> 
+                <i class="fab fa-instagram"></i> 
+                <i class="fab fa-linkedin"></i>
+            </div>
+        </div>
+    </div>
+    <div class="products-container">
+        
+        {% for product in products %}
+        <div class="product-card">
+            <div class="product-img">
+                <img class="product-image" src="{{product.image.url}}" alt="">
+            </div>
+            <div class="product-info">
+                <span>#{{product.category}} <span>
+                <a href=""><h5>{{product.title}}</h5></a>
+                <span>⭐⭐⭐⭐(4.0)</span><br>
+                <span>By <span><a class="retailer-title" href="{% url 'main:retailerdetails' product.retailer.id %}">{{product.retailer}}</a> </span></span><br>
+                <span class="price">${{product.sale_price}}</span>
+                <button ><i class="fas fa-cart-plus"></i>Add to Cart</button>
+                <button><i class="fas fa-heart"></i></button>
+            </div>              
+        </div>
+        {%endfor %}
+       
+       
+    </div>
+</div>
+{%endfor%}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
 {% for retailer in retailers %}
     <div class="retailer-details">
     <a href="{% url 'main:retailerdetails' retailer.id %}">
@@ -18,8 +119,9 @@
     </a>
 </div>
 {% endfor %}
+-->
+
 
     
 
-{%endfor %}
 {%endblock content%}

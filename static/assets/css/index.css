@@ -272,8 +272,8 @@ button{
 .footer-list>li>a:hover{
     color:orange;
 }
-.category-banner{
-    height:15em;
+.category-banner,.rd-banner{
+    min-height:15em;
     margin:1.5em;
     border-radius:10px;
     background-color: antiquewhite;
@@ -314,4 +314,17 @@ button{
     border:2px solid orange;
     border-radius: 10px;
     padding:1em;
+}
+.retailerdetails-main{
+    padding:1em;
+}
+.retailer-about{
+    margin:1em;
+    
+}
+.retailer-info-div{
+    margin:2em;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap:2em;
 }
