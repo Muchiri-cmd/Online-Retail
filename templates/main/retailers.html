@@ -5,12 +5,13 @@
 <div class="retailers-main">
   
   <div class="retailers-header">
-    <h1>Retialers List</h1>
+    <h1>Retailers List</h1>
     <div class="search-input">
       <input type="search" placeholder="Search for retailers">
       <i class="fas fa-search"></i>
     </div>
-    <p>We have {{retailers|length}} retailers currently</p>
+    <p>We have {{ retailers|length}} retailers currently</p>
+
   </div>
 
   <div class="retailers-list">
@@ -21,7 +22,8 @@
         <img class="retailer-image" src="{{ retailer.image.url }}" alt="">
        
       </div>
-      <span>{{retailer.products.count}} products</span>
+      <span>{{ retailer.products.count }} product{% if retailer.products.count != 1 %}s{% endif %}</span>
+
       <div class="retailer-info">
         <a href="{% url 'main:retailerdetails' retailer.id %}"><h2>{{retailer.title}}</h2></a>
         
