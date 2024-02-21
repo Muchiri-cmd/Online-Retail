@@ -1,9 +1,41 @@
 {% extends "base/base.html" %}
 {% load static %}
 {%block content%}
-{% for retailer in retailers %}
-  <div class="retailer-details">
-    <a href="{% url 'main:retailerdetails' retailer.id %}">
+
+<div class="retailers-main">
+  
+  <div class="retailers-header">
+    <h1>Retialers List</h1>
+    <div class="search-input">
+      <input type="search" placeholder="Search for retailers">
+      <i class="fas fa-search"></i>
+    </div>
+    <p>We have {{retailers|length}} retailers currently</p>
+  </div>
+
+  <div class="retailers-list">
+    {% for retailer in retailers %}
+
+    <div class="retailer-card">
+      <div class="retailer-image">
+        <img class="retailer-image" src="{{ retailer.image.url }}" alt="">
+       
+      </div>
+      <span>{{retailer.products.count}} products</span>
+      <div class="retailer-info">
+        <a href="{% url 'main:retailerdetails' retailer.id %}"><h2>{{retailer.title}}</h2></a>
+        
+        <span>{{retailer.description}}</span>
+        <span>⭐⭐⭐⭐(4.0)</span><br>
+        <p></p></span><i class="fas fa-location"></i><strong>Address: </strong> <span>{{retailer.address}}</span></p>
+        <p><i class="fas fa-phone"></i><strong>Call Us: </strong><span>+{{retailer.contact}}</span></p>
+        <a href="{% url 'main:retailerdetails' retailer.id %}"><button>Visit Store</button></a>
+        
+      </div>
+    </div>
+
+  <!--<div class="retailer-details">
+   
       <div class="retailer-info">
         <h2>{{ retailer.title }}</h2>
         <img src="{{ retailer.image.url }}" alt="">
@@ -11,7 +43,24 @@
        
       </div>
     </a>
-  </div>
+  </div>-->
 {% endfor %}
+ 
+  
+
+     
+    </div>
+
+  
+  
+  
+</div>
+
+
+
+
+
+
+
 
 {%endblock content%}
