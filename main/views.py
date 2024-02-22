@@ -51,3 +51,11 @@ def all_products_view(request):
    }
    return render(request,"main/products.html",context)
 
+def product_view(request,product_id):
+   product=Product.objects.get(id=product_id)
+   reviews=ProductReview.objects.filter(product=product)
+   context={
+      "product":product,
+      "reviews":reviews,
+   }
+   return render(request,'main/product_detail.html',context)

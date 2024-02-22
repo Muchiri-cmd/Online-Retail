@@ -1,0 +1,22 @@
+{% extends "base/base.html" %}
+{%load static%}
+{%block content%}
+<div class="product-card">
+    <div class="product-img">
+        <img class="product-image" src="{{product.image.url}}" alt="">
+    </div>
+    <div class="product-info">
+        <span>#{{product.category}} <span>
+        <a href=""><h5>{{product.title}}</h5></a>
+        <span>⭐⭐⭐⭐(4.0)</span><br>
+        <span>By <span><a class="retailer-title" href="{% url 'main:retailerdetails' product.retailer.id %}">{{product.retailer}}</a> </span></span><br>
+        <span class="price">${{product.sale_price}}</span>
+        <button ><i class="fas fa-cart-plus"></i>Add to Cart</button>
+        <button><i class="fas fa-heart"></i></button>
+        {%for review in reviews%}
+        <p>Review {{review.review}} {{review.rating}}</p>
+        {%endfor%}
+    </div>              
+</div>
+
+{%endblock content%}

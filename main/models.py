@@ -17,6 +17,14 @@ STOCK_STATUS=(
     ("outofstock", "Out of Stock"),
 )
 
+RATING=(
+     (1,"★☆☆☆☆"),
+     (2,"★★☆☆☆"),
+     (3,"★★★☆☆"),
+     (4,"★★★★☆"),
+     (5,"★★★★★"),
+)
+
 def user_dir_path(instance,filename):
     return 'user_{0}/{1}'.format(instance.user.id,filename)
 
@@ -106,3 +114,19 @@ class ProductImages(models.Model):
 
 
     #User model
+        
+class ProductReview(models.Model):
+    user=models.ForeignKey(User,on_delete=models.SET_NULL,null=True)
+    product=models.ForeignKey(Product,on_delete=models.CASCADE,related_name="product_reviews")
+    review=models.TextField()
+    rating=models.IntegerField(choices=RATING,default=None)
+    date_added=models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name_plural="reviews"
+
+    def __str__(self):
+        return self.product.title
+    
+    def get_rating(self):
+        return self.rating
