@@ -415,12 +415,36 @@ button{
 .reviews-container{
     display: grid;
     grid-template-columns: 1fr 1fr;
+    gap:2em;
 }
 .review-card{
     background-color:whitesmoke;
     height: auto;
     min-height: 100px;
-    padding:1em;
+    padding:2em;
     border-radius:10px;
-
+}
+.review-card{
+    position: relative;
+}
+.star-rating{
+    position:absolute;
+    top:0;
+    right:0;
+    margin:0.5em;
+}
+.user-name{
+    position: absolute;
+    bottom:0;
+    right:0;
+    margin:0.2em;
+    font-size:0.8em;
+}
+.review-date{
+    position: absolute;
+    bottom:0;
+    left:0;
+    margin:0.2em;
+    font-size:0.8em;
+    color:grey;
 }

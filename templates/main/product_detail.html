@@ -93,7 +93,7 @@
                                     <div class="product-rate d-inline-block mr-15">
                                         <div class="product-rating" style="width: 90%"></div>
                                     </div>
-                                    <h6>4.8 out of 5</h6>
+                                    <h6>{{rating.rating|floatformat:1}} out of 5</h6>
                                     <span>⭐⭐⭐⭐</span>
                                 </div>
                             </div>
@@ -112,17 +112,6 @@
                                                 <textarea class="form-control w-100" name="comment" id="comment" cols="30" rows="9" placeholder="Write Comment"></textarea>
                                             </div>
                                         </div>
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <input class="form-control" name="name" id="name" type="text" placeholder="Name" />
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <input class="form-control" name="email" id="email" type="email" placeholder="Email" />
-                                            </div>
-                                        </div>
-                                     
                                     </div>
                                     <div class="form-group">
                                         <button type="submit" class="button button-contactForm">Submit Review</button>
@@ -136,6 +125,9 @@
                         {%for review in reviews%}
                             <div class="review-card">
                                 <p>{{review.review}}</p>
+                                <span class="star-rating">⭐⭐⭐⭐</span>
+                                <span class="user-name"><i class="fas fa-user"></i>{{review.user}}</span>
+                                <span class="review-date">{{review.date_added}}</span>
                             </div>
                         
                         {%endfor%}

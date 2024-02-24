@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from .models import *
+from django.db.models import Count,Avg
 # Create your views here.
 @login_required
 def index_view(request):
@@ -53,9 +54,11 @@ def all_products_view(request):
 
 def product_view(request,product_id):
    product=Product.objects.get(id=product_id)
-   reviews=ProductReview.objects.filter(product=product)
+   reviews=ProductReview.objects.filter(product=product).order_by('-date_added')
+   rating=ProductReview.objects.filter(product=product).aggregate(rating=Avg('rating'))
    context={
       "product":product,
       "reviews":reviews,
+      "rating":rating,
    }
    return render(request,'main/product_detail.html',context)
