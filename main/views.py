@@ -1,8 +1,10 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse,JsonResponse
 from django.contrib.auth.decorators import login_required
 from .models import *
 from django.db.models import Count,Avg
+from .forms import *
+
 # Create your views here.
 @login_required
 def index_view(request):
@@ -56,9 +58,37 @@ def product_view(request,product_id):
    product=Product.objects.get(id=product_id)
    reviews=ProductReview.objects.filter(product=product).order_by('-date_added')
    rating=ProductReview.objects.filter(product=product).aggregate(rating=Avg('rating'))
+   review_form=ReviewForm()
    context={
       "product":product,
       "reviews":reviews,
       "rating":rating,
+      "review_form":review_form,
    }
    return render(request,'main/product_detail.html',context)
+
+def make_review(request,product_id):
+   product=Product.objects.get(id=product_id)
+   
+   review=ProductReview.objects.create(
+      user=request.user,
+      product=product,
+      review=request.POST['review'],
+      rating=request.POST['rating'],
+      
+   )
+   context={
+      'user':request.user.username,
+      'review':request.POST['review'],
+      'rating':request.POST['rating'],
+      'date':request.POST['date_added'],
+
+   }
+   average_review=ProductReview.objects.filter(product=product).aggregate(rating=Avg('rating'))
+   return JsonResponse({
+      'bool':True,
+      'context':context,
+      'average_review':average_review,
+   })
+     
+  
