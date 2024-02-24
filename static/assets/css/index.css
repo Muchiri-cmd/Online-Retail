@@ -328,3 +328,99 @@ button{
     grid-template-columns: repeat(2,1fr);
     gap:2em;
 }
+.pdtdetail-container{
+    display:grid;
+    grid-template-columns: repeat(3,1fr);
+    padding:3em;
+    margin:1em;
+    gap:3em;  
+}
+.imgs-container img{
+    width:4em;
+    height:4em;
+}
+.product-detail-image{
+    height:25em;
+    object-fit: cover;
+}
+.product-detail-card{
+    height:auto;
+    border:0.5px solid orange;
+    display: flex;
+    flex-direction: column;
+    gap:1em;
+    padding:1.2em;
+    border-radius: 10px;
+}
+.product-details{
+    margin-top:2em;
+}
+.product-detail-card:hover{
+    transform: scale(1.05);
+}
+.title-price span{
+    display: block; 
+    margin-bottom:.1em;
+}
+.retailer-details span {
+    display: block; 
+    margin-bottom:.1em;
+}
+.return-warranty span {
+    display: block; 
+    margin-bottom:.1em;
+}
+.delivery-card,.pdt-retailer-card{
+    border-radius:10px;
+    background-color: whitesmoke;
+    margin:1em;
+    padding:1em;
+}
+.nav.nav-tabs {
+    border-bottom: 1px solid #dee2e6;
+}
+.nav.nav-tabs .nav-item {
+    margin-bottom: -1px;
+}
+
+.nav.nav-tabs .nav-link {
+    border: 1px solid transparent;
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+    color: orange;
+    background-color: transparent;
+}
+
+.nav.nav-tabs .nav-link:hover {
+    border-color: #dee2e6 #dee2e6 #007bff;
+}
+
+.nav.nav-tabs .nav-link.active {
+    color: #495057;
+    background-color: #fff;
+    border-color: #dee2e6 #dee2e6 #fff;
+}
+.tab-content.shop_info_tab {
+    padding: 20px;
+    border: 1px solid #dee2e6;
+    border-top: 0;
+}
+
+.tab-pane.fade.show.active {
+    display: block;
+}
+.tab-pane.fade {
+    display: none;
+}
+.reviews-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.review-card{
+    background-color:whitesmoke;
+    height: auto;
+    min-height: 100px;
+    padding:1em;
+    border-radius:10px;
+
+}

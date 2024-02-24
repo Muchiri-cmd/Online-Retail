@@ -2,30 +2,11 @@
 {%load static%}
 {%block content%}
 
-<!--
-    <div class="product-card">
-    <div class="product-img">
-        <img class="product-image" src="{{product.image.url}}" alt="">
-    </div>
-    <div class="product-info">
-        <span>#{{product.category}} <span>
-        <a href=""><h5>{{product.title}}</h5></a>
-        <span>⭐⭐⭐⭐(4.0)</span><br>
-        <span>By <span><a class="retailer-title" href="{% url 'main:retailerdetails' product.retailer.id %}">{{product.retailer}}</a> </span></span><br>
-        <span class="price">${{product.sale_price}}</span>
-        <button ><i class="fas fa-cart-plus"></i>Add to Cart</button>
-        <button><i class="fas fa-heart"></i></button>
-        {%for review in reviews%}
-        <p>Review {{review.review}} {{review.rating}}</p>
-        {%endfor%}
-    </div>              
-</div>
--->
 <div class="pdtdetail-container">
 
-    <div class="product-card">
+    <div class="product-detail-card">
         <div class="img-container">
-            <img src="{{product.image.url}}" alt="">
+            <img class="product-detail-image"src="{{product.image.url}}" alt="">
         </div>
         <div class="imgs-container">
             <img src="{{product.image.url}}" alt="">
@@ -33,21 +14,18 @@
             <img src="{{product.image.url}}" alt="">
             <img src="{{product.image.url}}" alt="">
         </div>
-        <div class="product-details">
-            <div class="title-price">
-                <a href=""><h5>{{product.title}}</h5></a>
-                <span>⭐⭐⭐⭐(4.0)</span><span>22 reviews</span><br>
-                <span class="price">${{product.base_price}}</span>
-                <span class="price">${{product.sale_price}}</span>
-            </div>
-            <div class="productdesc">
-                <p>{{product.description}}</p>
-            </div>
-            <div class="product-purchase">
-                <input type="number">
-                <button ><i class="fas fa-cart-plus"></i>Add to Cart</button>
-                <button><i class="fas fa-heart"></i></button>
-            </div>
+    </div>
+    <div class="product-details">
+        <div class="title-price">
+            <span><h1>{{product.title}}</h1></span>
+            <span>⭐⭐⭐⭐(4.0)</span><span>22 reviews</span><br>
+            <strike><span class="price">${{product.base_price}}</span></strike>
+            <span class="price">${{product.sale_price}}</span>
+        </div>
+        <div class="product-purchase">
+            <input type="number">
+            <button ><i class="fas fa-cart-plus"></i>Add to Cart</button>
+            <button><i class="fas fa-heart"></i></button>
         </div>
         <div class="product-specs">
             <span>Type :{{product.category}}</span>
@@ -55,27 +33,133 @@
             <span>Stock Status: {{product.stock_status}}</span>
         </div>
     </div>
+       
+   
     <div class="aside">
         <div class="delivery-card">
-            <p>Delivery</p>
+            <h3>Delivery</h3>
             <div class="address">
-                </p></span><i class="fas fa-location"></i><strong>Address: </strong> <span>User Delivery Address</span></p><span>Change</span>
-            </div>
-            <div class="return-warranty">
-                <span>100% Authentic</span>{{product.return_time}}<span></span>{{product.warranty_period}}<span></span>
+                </p></span><i class="fas fa-location"></i><strong>Address: </strong> <span>User Delivery Address</span></p>
+                <a href=""><span style="color:orange;">Change</span></a>
             </div>
         </div>
         <div class="pdt-retailer-card">
-            <p>Retailer</p>
+            <h3>Retailer</h3>
             <div class="retailer-details">
-               <span>{{retailer.title}}</span>
-               <span>⭐⭐⭐⭐{{retailer.rating}}</span> 
-               </p></span><i class="fas fa-location"></i><strong>Address: </strong> <span>{{retailer.address}}</span></p><span>Change</span>
-               <p><i class="fas fa-phone"></i><strong>Call Us: </strong><span>+{{retailer.contact}}</span></p>
+               <span>{{product.retailer.title}}</span>
+               <span>⭐⭐⭐⭐<span> 
+               <span>Rating: {{product.retailer.rating}}</span>
+               <span>Return Time: {{product.retailer.return_time}} days</span>
+               </p></span><i class="fas fa-location"></i><strong>Address: </strong> <span>{{product.retailer.address}}</span></p>
+               <p><i class="fas fa-phone"></i><strong>Call Us: </strong><span>+{{product.retailer.contact}}</span></p>
+            </div>
+            <div class="return-warranty">
+                <span>100% Authentic</span>
+                <span>warranty: {{product.warranty_period}} days</span>
             </div>
         </div>
     </div>
 </div>
+<div class="product-tab">
+    <div class="product-info">
+        <div>
+            <ul class="nav nav-tabs text-uppercase">
+                <li class="nav-item">
+                    <a class="nav-link active" id="Description-tab" data-bs-toggle="tab" href="#Description">Description</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="Reviews-tab" data-bs-toggle="tab" href="#Reviews">Reviews</a>
+                </li>
+            </ul>
+            <div class="tab-content shop_info_tab entry-main-content">
+                <div class="tab-pane fade show active" id="Description">
+                    <div>
+                       {{product.description}}
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="Reviews">
+                    <!--Comments-->
+                    <div class="comments-area">
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <h4 class="mb-30">Customer questions & answers</h4>
+                                <div class="comment-list">
+                                    <!-- Comments list omitted for brevity -->
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <h4 class="mb-30">Customer reviews</h4>
+                                <div class="d-flex mb-30">
+                                    <div class="product-rate d-inline-block mr-15">
+                                        <div class="product-rating" style="width: 90%"></div>
+                                    </div>
+                                    <h6>4.8 out of 5</h6>
+                                    <span>⭐⭐⭐⭐</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--comment form-->
+                    <div class="comment-form">
+                        <h4 class="mb-15">Add a review</h4>
+                        <div class="product-rate d-inline-block mb-30"></div>
+                        <div class="row">
+                            <div class="col-lg-8 col-md-12">
+                                <form class="form-contact comment_form" action="#" id="commentForm">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <textarea class="form-control w-100" name="comment" id="comment" cols="30" rows="9" placeholder="Write Comment"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <input class="form-control" name="name" id="name" type="text" placeholder="Name" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <input class="form-control" name="email" id="email" type="email" placeholder="Email" />
+                                            </div>
+                                        </div>
+                                     
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="submit" class="button button-contactForm">Submit Review</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <p>Reviews</p>
+                    <div class="reviews-container">
+                        {%for review in reviews%}
+                            <div class="review-card">
+                                <p>{{review.review}}</p>
+                            </div>
+                        
+                        {%endfor%}
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function(){
+        // handle tab switching
+        $('.nav-link').click(function(){
+            var tab_id = $(this).attr('href');
+            $('.nav-link').removeClass('active');
+            $('.tab-pane').removeClass('show active');
+            $(this).addClass('active');
+            $(tab_id).addClass('show active');
+        });
+    });
+</script>
 
 
 {%endblock content%}
