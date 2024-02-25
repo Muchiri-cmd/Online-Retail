@@ -15,7 +15,7 @@ class ProductAdmin(admin.ModelAdmin):
     list_display=['title','product_image','sale_price','category','retailer','featured','product_status']
 
 class ReviewAdmin(admin.ModelAdmin):
-    list_display=['product','review','rating','user']
+    list_display=['product','review','rating','user','date_added']
 
 admin.site.register(Category,CategoryAdmin)
 admin.site.register(Retailer,RetailerAdmin)

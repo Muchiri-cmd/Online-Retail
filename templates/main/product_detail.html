@@ -84,7 +84,6 @@
                             <div class="col-lg-8">
                                 <h4 class="mb-30">Customer questions & answers</h4>
                                 <div class="comment-list">
-                                    <!-- Comments list omitted for brevity -->
                                 </div>
                             </div>
                             <div class="col-lg-4">
@@ -100,8 +99,8 @@
                         </div>
                     </div>
                     <!--comment form-->
-                    <div class="comment-form">
-                        <h4 class="mb-15">Add a review</h4>
+                    <form class="comment-form" method="POST" action="{% url 'main:makereview' product.id %}">
+                        {% csrf_token %}
                         <div class="product-rate d-inline-block mb-30"></div>
                         <div class="row">
                             <div class="col-lg-8 col-md-12">
@@ -113,7 +112,12 @@
                                {{review_form.rating}}
                             </div>
                         </div>
-                    </div>
+                        <div class="submit-button">
+                            <button type="submit">Add Review</button>
+                        </div>
+                        
+                    </form>
+                    <p class="review-success" id="review-para"></p>
                     <p>Reviews</p>
                     <div class="reviews-container">
                         {%for review in reviews%}

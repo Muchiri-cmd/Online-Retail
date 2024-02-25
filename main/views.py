@@ -81,8 +81,6 @@ def make_review(request,product_id):
       'user':request.user.username,
       'review':request.POST['review'],
       'rating':request.POST['rating'],
-      'date':request.POST['date_added'],
-
    }
    average_review=ProductReview.objects.filter(product=product).aggregate(rating=Avg('rating'))
    return JsonResponse({
