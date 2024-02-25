@@ -59,11 +59,18 @@ def product_view(request,product_id):
    reviews=ProductReview.objects.filter(product=product).order_by('-date_added')
    rating=ProductReview.objects.filter(product=product).aggregate(rating=Avg('rating'))
    review_form=ReviewForm()
+   make_review=True
+   if request.user.is_authenticated:
+      user_review=ProductReview.objects.filter(user=request.user,product=product).count()
+      if user_review>0:
+         make_review=False
+
    context={
       "product":product,
       "reviews":reviews,
       "rating":rating,
       "review_form":review_form,
+      "make_review":make_review,
    }
    return render(request,'main/product_detail.html',context)
 
@@ -81,6 +88,7 @@ def make_review(request,product_id):
       'user':request.user.username,
       'review':request.POST['review'],
       'rating':request.POST['rating'],
+      
    }
    average_review=ProductReview.objects.filter(product=product).aggregate(rating=Avg('rating'))
    return JsonResponse({

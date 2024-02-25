@@ -17,16 +17,18 @@ $(".comment-form").submit(function(e){
                 $(".comment-form").hide()
                 
                
-                let _html='<div class="review-card">'
-                    _html+='<p>'+response.context.review+'</p>'
-                    for(let i=1;i<response.context.rating;i++){
-                        _html+='<i class="fas fa-star"></i>'
-                    }
-                    _html+='<span class="user-name"><i class="fas fa-user"></i>'+response.context.user+'</span>'
-                    _html+='<span class="review-date">'+ response.context.review +'</span>'
-                    _html+='</div>'
+                let _html = '<div class="review-card">';
+                _html += '<p>' + response.context.review + '</p>';
+                _html += '<span class="star-rating">';
+                for (let i = 0; i < response.context.rating; i++) {
+                    _html += '<i class="fas fa-star"></i>';
+                }
+                _html += '</span>';
+                _html += '<span class="user-name"><i class="fas fa-user"></i>' + response.context.user + '</span>';
+                _html += '<span class="review-date">Just now</span>';
+                _html += '</div>';
 
-                    $(".reviews-container").prepend(_html)
+                $(".reviews-container").prepend(_html);
             }
             
         }
