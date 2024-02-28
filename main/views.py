@@ -111,3 +111,16 @@ def search_products(request):
     }
 
     return render(request, 'main/search.html', context)
+
+def search_retailers(request):
+    query = request.GET.get("query")
+    retailers = []
+    if query:
+        retailers = Retailer.objects.filter(title__icontains=query)
+
+    context = {
+        "query": query,
+        "retailers": retailers,
+    }
+
+    return render(request, 'main/search_retailers.html', context)
