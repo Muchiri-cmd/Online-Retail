@@ -98,3 +98,16 @@ def make_review(request,product_id):
    })
      
   
+def search_products(request):
+    query = request.GET.get("query")
+    products = []
+
+    if query:
+        products = Product.objects.filter(title__icontains=query) | Product.objects.filter(description__icontains=query)
+
+    context = {
+        "query": query,
+        "products": products,
+    }
+
+    return render(request, 'main/search.html', context)

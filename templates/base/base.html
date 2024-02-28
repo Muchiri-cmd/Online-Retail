@@ -56,9 +56,10 @@
                 <!-- Add more options as needed -->
             </select>
         </div>
-        <div class="search-bar">
-            <input type"search" class="search-input" placeholder="Search For Products/Categories"><i class="fas fa-search"></i></input>
-        </div>
+        <form  class="search-bar" action="{% url 'main:search' %}" method="GET">
+                <input name="query" type="search" class="search-input" placeholder="Search For Products/Categories">
+                <button type="submit" class="fas fa-search"></button>
+        </form>
         <div class="hotline">
             <i class="fas fa-headphones"></i><span>+254-113708866</span><br>
             <span>24/7 Support</span>

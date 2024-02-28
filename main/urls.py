@@ -11,5 +11,6 @@ urlpatterns = [
     path('products/',all_products_view,name="products"),
     path('product/<product_id>',product_view,name="product"),
     path('make-review/<product_id>',make_review,name="makereview"),
+    path('search',search_products,name="search"),
 
 ]
