@@ -4,7 +4,61 @@
 
 
 <section class="products-section">
-    <h2>All Products</h2>
+    <h2>Filters <i class="fas fa-filter"></i></h2>
+    <button id="toggle-filters">Show Filters</button>
+
+    <div class="filters-section hidden">
+        
+        <div class="filter-list">
+            <h5>Categories</h5>
+            <div class="category-options">
+            {% for category in categories %}
+            <input type="checkbox" id="category-option-{{ category.id }}" name="category-option" value="{{ category.id }}">
+            <label for="category-option-{{ category.id }}">{{ category.title }}</label><br>
+            {% endfor %}
+            </div>
+        </div>    
+            
+        <div class="filter-list">
+            <h5>By Retailers</h5>
+            <div class="retailer-options">
+            {% for retailer in retailers %}
+                <input type="checkbox" id="retailer-option-{{ retailer.id }}" name="retailer-option" value="{{ retailer.id }}">
+                <label for="retailer-option-{{ retailer.id }}">{{ retailer.title }}</label><br>
+            {% endfor %}
+            </div>
+        </div>
+             
+        <div class="filter-list">
+            <h5>By Price</h5>
+            <div class="price-range">
+                <div class="price-filter">
+                    <div class="price-filter-inner">
+                        <div id="slider-range"></div>
+                        <div class="price-values">
+                            <div>From: <strong id="slider-range-value1"></strong></div>
+                            <div>To: <strong id="slider-range-value2"></strong></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="price-options">
+                    <input type="checkbox" id="price-option-1" name="price-option" value="">
+                    <label for="price-option-1">KES 0 - 500</label><br>
+                    <input type="checkbox" id="price-option-2" name="price-option" value="">
+                    <label for="price-option-2">KES 500 - 1000</label><br>
+                    <input type="checkbox" id="price-option-3" name="price-option" value="">
+                    <label for="price-option-3">KES 1000 - 5000</label><br>
+                    <input type="checkbox" id="price-option-4" name="price-option" value="">
+                    <label for="price-option-4">KES 5000 - 10000</label><br>
+                    <input type="checkbox" id="price-option-5" name="price-option" value="">
+                    <label for="price-option-5">Over 10000</label>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+   
+
     <div class="products-container">
         
         {% for product in products %}
@@ -26,8 +80,12 @@
        
        
     </div>
+    
+
        
 </section>
-   
+
+
+
 
 {%endblock content%}

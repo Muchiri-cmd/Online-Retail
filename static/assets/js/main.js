@@ -35,3 +35,4 @@ $(".comment-form").submit(function(e){
     })
 
 })
+

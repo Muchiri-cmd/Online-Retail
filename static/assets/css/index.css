@@ -188,7 +188,7 @@ a:hover{
 }
 .products-container{
    display: grid;
-   grid-template-columns: repeat(auto-fit,350px);
+   grid-template-columns: repeat(auto-fit,340px);
 }
 .product-img,.retailer-img{
     display: flex;
@@ -450,4 +450,31 @@ button{
 }
 .comment-form{
     margin-bottom:1em;
+}
+.filters-section{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(350px,1fr));
+}
+
+.filter-list{
+    height:auto;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 10px whitesmoke;
+    width:auto;
+    padding:1em;
+    margin:1em;
+}
+.filter-list>ul>li{
+    margin: 1.2em;
+    
+}
+.filter-list>ul>li>a{
+    padding:0.5em;
+}
+.filters-section.hidden{
+    display: none;
+}
+
+.filters-section.visible {
+    display: grid;
 }

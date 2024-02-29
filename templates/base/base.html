@@ -77,6 +77,10 @@
             setTimeout(() => {
                 $(".alert").alert("close");
             }, 2500);
+            $('#toggle-filters').click(function() {
+                console.log("Filtersection Js loaded");
+                $('.filters-section').toggleClass('visible');
+            });
         });
     </script>
     {% block content%}

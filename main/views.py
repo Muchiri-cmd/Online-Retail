@@ -49,7 +49,9 @@ def retailer_detail_view(request,id):
 
 def all_products_view(request):
    products=Product.objects.filter(product_status="published")
+   retailers=Retailer.objects.all()
    context={
+      "retailers":retailers,
       "products":products,
    }
    return render(request,"main/products.html",context)
