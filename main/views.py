@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from .models import *
 from django.db.models import Count,Avg
 from .forms import *
+from django.template.loader import render_to_string
 
 # Create your views here.
 @login_required
@@ -126,3 +127,30 @@ def search_retailers(request):
     }
 
     return render(request, 'main/search_retailers.html', context)
+
+from decimal import Decimal
+def filter_products(request):
+   categories = request.GET.getlist("category[]")
+   retailers = request.GET.getlist("retailer[]")
+   products=Product.objects.filter(product_status="published").distinct()#more specific
+   
+
+   if 'price[]' in request.GET:
+      price = Decimal(request.GET.getlist('price[]')[-1])
+      products = products.filter(sale_price__lte=price)
+
+   
+
+   if len(retailers)>0:
+      products=products.filter(retailer__in=retailers).distinct()
+   if len(categories)>0:
+      products=products.filter(category__in=categories)
+
+   context={
+      "products":products,
+   }
+   data = render_to_string("main/async/products.html",context)
+   return JsonResponse({
+        "data":data,
+
+   })

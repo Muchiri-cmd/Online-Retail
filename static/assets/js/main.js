@@ -36,3 +36,31 @@ $(".comment-form").submit(function(e){
 
 })
 
+$(document).ready(function(){
+    $(".filter-checkbox").on("click",function(){
+        let filterObject={}
+        $(".filter-checkbox").each(function(i){
+            let filterValue=$(this).val()
+            let filterKey=$(this).data("filter")
+            filterObject[filterKey]=Array.from(document.querySelectorAll('input[data-filter=' + filterKey + ']:checked')).map(function(e){
+                return e.value
+            })
+        })
+        console.log("FilterObject is:",filterObject)
+        $.ajax({
+            url:'/filter-product',
+            data:filterObject,
+            dataType:'json',
+            beforeSend:function(){
+                console.log("Filtering.....")
+            },
+            success:function(response){
+                console.log(response);
+                console.log("Filtered successfully")
+                $("#filtered-products").html(response.data)
+            }
+        })
+    })
+
+})
+

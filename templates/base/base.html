@@ -78,8 +78,9 @@
                 $(".alert").alert("close");
             }, 2500);
             $('#toggle-filters').click(function() {
-                console.log("Filtersection Js loaded");
                 $('.filters-section').toggleClass('visible');
+                var buttonText = $('.filters-section').hasClass('visible') ? 'Hide Filters' : 'Show Filters';
+                $(this).text(buttonText);
             });
         });
     </script>

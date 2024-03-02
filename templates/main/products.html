@@ -12,10 +12,10 @@
         <div class="filter-list">
             <h5>Categories</h5>
             <div class="category-options">
-            {% for category in categories %}
-            <input type="checkbox" id="category-option-{{ category.id }}" name="category-option" value="{{ category.id }}">
-            <label for="category-option-{{ category.id }}">{{ category.title }}</label><br>
-            {% endfor %}
+                {% for category in categories %}
+                    <input class="filter-checkbox" data-filter="category" type="checkbox" id="category-option-{{ category.id }}" name="category-option" value="{{ category.id }}">
+                    <label for="category-option-{{ category.id }}">{{ category.title }}</label><br>
+                {% endfor %}
             </div>
         </div>    
             
@@ -23,7 +23,7 @@
             <h5>By Retailers</h5>
             <div class="retailer-options">
             {% for retailer in retailers %}
-                <input type="checkbox" id="retailer-option-{{ retailer.id }}" name="retailer-option" value="{{ retailer.id }}">
+                <input class="filter-checkbox" data-filter="retailer" type="checkbox" id="retailer-option-{{ retailer.id }}" name="retailer-option" value="{{ retailer.id }}">
                 <label for="retailer-option-{{ retailer.id }}">{{ retailer.title }}</label><br>
             {% endfor %}
             </div>
@@ -42,15 +42,15 @@
                     </div>
                 </div>
                 <div class="price-options">
-                    <input type="checkbox" id="price-option-1" name="price-option" value="">
-                    <label for="price-option-1">KES 0 - 500</label><br>
-                    <input type="checkbox" id="price-option-2" name="price-option" value="">
-                    <label for="price-option-2">KES 500 - 1000</label><br>
-                    <input type="checkbox" id="price-option-3" name="price-option" value="">
-                    <label for="price-option-3">KES 1000 - 5000</label><br>
-                    <input type="checkbox" id="price-option-4" name="price-option" value="">
-                    <label for="price-option-4">KES 5000 - 10000</label><br>
-                    <input type="checkbox" id="price-option-5" name="price-option" value="">
+                    <input class="filter-checkbox" data-filter="price" type="checkbox" id="price-option-1" name="price-option" value="500.00">
+                    <label for="price-option-1">$ 0 - 500</label><br>
+                    <input class="filter-checkbox" data-filter="price" type="checkbox" id="price-option-2" name="price-option" value="1000.00">
+                    <label for="price-option-2">$ 500 - 1000</label><br>
+                    <input class="filter-checkbox" data-filter="price" type="checkbox" id="price-option-3" name="price-option" value="5000.00">
+                    <label for="price-option-3">$ 1000 - 5000</label><br>
+                    <input class="filter-checkbox" data-filter="price" type="checkbox" id="price-option-4" name="price-option" value="10000.00">
+                    <label for="price-option-4">$ 5000 - 10000</label><br>
+                    <input class="filter-checkbox"data-filter="price" type="checkbox" id="price-option-5" name="price-option" value="100000.00">
                     <label for="price-option-5">Over 10000</label>
                 </div>
             </div>
@@ -59,10 +59,10 @@
    
    
 
-    <div class="products-container">
+    <div class="products-container" id="filtered-products">
         
         {% for product in products %}
-        <div class="product-card">
+        <div class="product-card" id="filteredproducts">
             <div class="product-img">
                 <img class="product-image" src="{{product.image.url}}" alt="">
             </div>

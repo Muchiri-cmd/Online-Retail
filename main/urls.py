@@ -13,5 +13,6 @@ urlpatterns = [
     path('make-review/<product_id>',make_review,name="makereview"),
     path('search',search_products,name="search"),
     path('search/retailer/',search_retailers,name="searchretailers"),
+   path('filter-product/',filter_products, name='filter-product'),
 
 ]
