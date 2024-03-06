@@ -43,7 +43,7 @@
                     {% for product in products %}
                     <div class="product-card">
                         <div class="product-img">
-                            <img class="product-image" src="{{product.image.url}}" alt="">
+                            <a href="{%url 'main:product' product.id %}"><img class="product-image" src="{{product.image.url}}" alt=""></a>
                         </div>
                         <div class="product-info">
                             <span>#{{product.category}} <span>

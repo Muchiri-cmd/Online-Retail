@@ -219,9 +219,17 @@ a:hover{
     object-fit: cover;
     
 }
-.price{
+.base-price{
     font-size:1.5em;
     color:orange;
+}
+.current-price{
+    font-size:2em;
+}
+.product-quantity{
+    width:5em;
+    height:2em;
+    padding:1em;
 }
 .retailer-title{
     color:pink;

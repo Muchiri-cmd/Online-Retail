@@ -5,6 +5,7 @@ from .models import *
 from django.db.models import Count,Avg
 from .forms import *
 from django.template.loader import render_to_string
+from decimal import Decimal
 
 # Create your views here.
 @login_required
@@ -128,7 +129,6 @@ def search_retailers(request):
 
     return render(request, 'main/search_retailers.html', context)
 
-from decimal import Decimal
 def filter_products(request):
    categories = request.GET.getlist("category[]")
    retailers = request.GET.getlist("retailer[]")
@@ -154,3 +154,27 @@ def filter_products(request):
         "data":data,
 
    })
+
+def add_to_cart(request):
+   cart_product={}
+
+   cart_product[str(request.GET['productId'])]={
+      'product_title':request.GET['productTitle'],
+      'product_price':request.GET['productPrice'],
+      'product_qty':request.GET.get('qty'),
+   }
+
+   if 'cart_data_obj' in request.session:
+      if str(request.GET['productId']) in request.session['cart_data_obj']:
+         cart_data=request.session['cart_data_obj']
+         cart_data[str(request.GET['productId'])]['product_qty']=int(cart_product[str(request.GET['productId'])]['product_qty'])
+         cart_data.update(cart_data)
+         request.session['cart_data_obj']=cart_data
+      else:
+         cart_data=request.session['cart_data_obj']
+         cart_data.update(cart_product)
+         request.session['cart_data_obj']=cart_data
+   else:
+      request.session['cart_data_obj']=cart_product
+
+   return JsonResponse({"data":request.session['cart_data_obj'],'cart_count':len(request.session['cart_data_obj'])})

@@ -19,12 +19,14 @@
         <div class="title-price">
             <span><h1>{{product.title}}</h1></span>
             <span>⭐⭐⭐⭐(4.0)</span><span>22 reviews</span><br>
-            <strike><span class="price">${{product.base_price}}</span></strike>
-            <span class="price">${{product.sale_price}}</span>
+            <strike><span class="base-price">${{product.base_price}}</span></strike>
+            <span class="current-price">${{product.sale_price}}</span>
         </div>
         <div class="product-purchase">
-            <input type="number">
-            <button ><i class="fas fa-cart-plus"></i>Add to Cart</button>
+            <input type="number" value="1" class="product-quantity">
+            <input type="hidden" value={{product.id}} class="product-id" name="" id="">
+            <input type="hidden" value={{product.title}} class="product-title" name="" id="">
+            <button type="submit" class="add-to-cart-btn"><i class="fas fa-cart-plus"></i>Add to Cart</button>
             <button><i class="fas fa-heart"></i></button>
         </div>
         <div class="product-specs">
@@ -145,18 +147,7 @@
    
 </div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    $(document).ready(function(){
-        // handle tab switching
-        $('.nav-link').click(function(){
-            var tab_id = $(this).attr('href');
-            $('.nav-link').removeClass('active');
-            $('.tab-pane').removeClass('show active');
-            $(this).addClass('active');
-            $(tab_id).addClass('show active');
-        });
-    });
-</script>
+
 
 
 {%endblock content%}

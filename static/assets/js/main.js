@@ -35,7 +35,7 @@ $(".comment-form").submit(function(e){
     })
 
 })
-
+//FILTER PRODUCTS
 $(document).ready(function(){
     $(".filter-checkbox").on("click",function(){
         let filterObject={}
@@ -64,3 +64,32 @@ $(document).ready(function(){
 
 })
 
+//ADD ITEMS TO CART
+$(".add-to-cart-btn").on("click",function(){
+    let productId=$(".product-id").val()
+    let qty=$(".product-quantity").val()
+    let productPrice=$(".current-price").text()
+    let productTitle=$(".product-title").val()
+    let thisVal=$(this)
+
+    $.ajax({
+        url:'/add-to-cart',
+        data:{
+            'qty':qty,
+            'productTitle':productTitle,
+            'productId':productId,
+            'productPrice':productPrice
+        },
+        dataType:'json',
+        beforeSend:function(){
+            console.log("Adding to cart....")
+        },
+        success:function(response){
+            console.log(response)
+            console.log("Added to cart successfully")
+            $(".cart-count").text(response.cart_count)
+            thisVal.html("Added to cart")
+        }
+    })
+
+})

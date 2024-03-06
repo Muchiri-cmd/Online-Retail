@@ -35,7 +35,7 @@
             </ul>
             <ul class="account-links">
                 <li><a href=""><i class="fas fa-heart"></i>Wishlist</a></li>
-                <li><a href=""><i class="fas fa-cart-plus"></i>Cart</a></li>
+                <li><span class="cart-count">{{request.session.cart_data_obj|length}}</span><a href=""><i class="fas fa-cart-plus"></i>Cart</a></li>
                 <li class="dropdown">
                     <a href="#"><i class="fas fa-user"></i>Account</a>
                     <ul class="dropdown-menu">

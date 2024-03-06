@@ -17,8 +17,16 @@ class ProductAdmin(admin.ModelAdmin):
 class ReviewAdmin(admin.ModelAdmin):
     list_display=['product','review','rating','user','date_added']
 
+class CartAdmin(admin.ModelAdmin):
+    list_display=['price','date_added','paid_status','product_status']
+
+class CartItemAdmin(admin.ModelAdmin):
+    list_display=['order','product_status','item','image','quantity','price','total','invoice_no']
+
 admin.site.register(Category,CategoryAdmin)
 admin.site.register(Retailer,RetailerAdmin)
 admin.site.register(ProductImages,ProductImagesAdmin)
 admin.site.register(Product,ProductAdmin)
 admin.site.register(ProductReview,ReviewAdmin)
+admin.site.register(Cart,CartAdmin)
+admin.site.register(CartItem,CartItemAdmin)

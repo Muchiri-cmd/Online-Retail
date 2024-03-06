@@ -130,3 +130,27 @@ class ProductReview(models.Model):
     
     def get_rating(self):
         return self.rating
+    
+class Cart(models.Model):
+    price=models.DecimalField(max_digits=999999999,decimal_places=2)
+    date_added=models.DateTimeField(auto_now_add=True)
+    paid_status=models.BooleanField(default=False)
+    product_status=models.CharField(choices=STATUS,max_length=30,default="published")
+
+    user=models.ForeignKey(User,on_delete=models.CASCADE)
+    class Meta:
+        verbose_name_plural='Cart'
+
+class CartItem(models.Model):
+    order=models.ForeignKey(Cart,on_delete=models.CASCADE)
+    product_status=models.CharField(choices=STATUS,max_length=30,default='published')
+    item=models.CharField(max_length=200)
+    image=models.CharField(max_length=200)
+    quantity=models.IntegerField(default=1)
+    price=models.DecimalField(max_digits=999999999,decimal_places=2)
+    total=models.DecimalField(max_digits=999999999,decimal_places=2)
+    invoice_no=models.CharField(max_length=200)
+
+    def cart_image(self):
+        return mark_safe('<img src="/media/%s" width="50" height="50" />' % (self.image))
+    

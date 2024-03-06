@@ -24,7 +24,8 @@ urlpatterns = [
     #In-app Urls
     path("",include("main.urls")),
     path("user/",include("UsersApp.urls")),
-
+    
+    
     path("ckeditor5/", include('django_ckeditor_5.urls')),
 ]
 
