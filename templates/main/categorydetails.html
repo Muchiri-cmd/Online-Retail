@@ -19,10 +19,13 @@
                     <div class="product-info">
                         <span>#{{ category_product.category }}</span>
                         <a href=""><h5>{{ category_product.title }}</h5></a>
+                        <input type="hidden" value="1" class="product-quantity">
+                        <input type="hidden" value={{category_product.id}} class="product-id" name="" id="">
+                        <input type="hidden" value={{category_product.title}} class="product-title" name="" id="">
                         <span>⭐⭐⭐⭐(4.0)</span><br>
                         <span>By <a class="retailer-title" href="{% url 'main:retailerdetails' category_product.retailer.id %}">{{ category_product.retailer }}</a></span><br>
-                        <span class="price">${{ category_product.sale_price }}</span>
-                        <button><i class="fas fa-cart-plus"></i>Add to Cart</button>
+                        <span class="price current-price">${{ category_product.sale_price }}</span>
+                        <button type="submit" class="add-to-cart-btn"><i class="fas fa-cart-plus"></i>Add to Cart</button>
                         <button><i class="fas fa-heart"></i></button>
                     </div>              
                 </div>
