@@ -13,7 +13,9 @@ urlpatterns = [
     path('make-review/<product_id>',make_review,name="makereview"),
     path('search',search_products,name="search"),
     path('search/retailer/',search_retailers,name="searchretailers"),
-   path('filter-product/',filter_products, name='filter-product'),
-   path('add-to-cart/',add_to_cart,name="add-to-cart")
+    path('filter-product/',filter_products, name='filter-product'),
+    path('add-to-cart/',add_to_cart,name="add-to-cart"),
+    path('cart/',view_cart,name="view-cart")
+   
 
 ]

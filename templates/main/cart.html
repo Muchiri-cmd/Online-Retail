@@ -1,0 +1,8 @@
+{% extends "base/base.html" %}
+{% block content%}
+    {%for product_id, item in cart_data.items%}
+        <div>
+            {{item}}
+        </div>
+    {%endfor%}
+{%endblock content%}

@@ -20,9 +20,10 @@
             <span><h1>{{product.title}}</h1></span>
             <span>⭐⭐⭐⭐(4.0)</span><span>22 reviews</span><br>
             <strike><span class="base-price">${{product.base_price}}</span></strike>
-            <span class="current-price">${{product.sale_price}}</span>
+            <span class="current-price">{{product.sale_price}}</span>
         </div>
-        <div class="product-purchase">
+        <div class="product-purchase product-card">
+            <span style="display:none" class="current-price">{{product.sale_price}}</span>
             <input type="number" value="1" class="product-quantity">
             <input type="hidden" value={{product.id}} class="product-id" name="" id="">
             <input type="hidden" value={{product.title}} class="product-title" name="" id="">

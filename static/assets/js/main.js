@@ -66,11 +66,12 @@ $(document).ready(function(){
 
 //ADD ITEMS TO CART
 $(".add-to-cart-btn").on("click",function(){
-    let productId=$(".product-id").val()
-    let qty=$(".product-quantity").val()
-    let productPrice=$(".current-price").text()
-    let productTitle=$(".product-title").val()
-    let thisVal=$(this)
+    let productCard = $(this).closest('.product-card'); 
+    let productId = productCard.find(".product-id").val();
+    let qty = productCard.find(".product-quantity").val();
+    let productPrice = parseFloat(productCard.find(".current-price").text());
+    let productTitle = productCard.find(".product-title").val();
+    let thisVal = $(this);
 
     $.ajax({
         url:'/add-to-cart',

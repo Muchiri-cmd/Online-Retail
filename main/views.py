@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse,JsonResponse
 from django.contrib.auth.decorators import login_required
 from .models import *
@@ -6,6 +6,7 @@ from django.db.models import Count,Avg
 from .forms import *
 from django.template.loader import render_to_string
 from decimal import Decimal
+from django.contrib import messages
 
 # Create your views here.
 @login_required
@@ -178,3 +179,13 @@ def add_to_cart(request):
       request.session['cart_data_obj']=cart_product
 
    return JsonResponse({"data":request.session['cart_data_obj'],'cart_count':len(request.session['cart_data_obj'])})
+
+def view_cart(request):
+   cart_total_amount=0
+   if 'cart_data_obj' in request.session:
+      for product_id,item in request.session['cart_data_obj'].items():
+         cart_total_amount+=int(item['product_qty']) * float(item['product_price'])
+         return render(request,"main/cart.html",{"cart_data":request.session['cart_data_obj'],'totalcartitems':len(request.session['cart_data_obj']),'cart_total_amount':cart_total_amount})
+   else:
+      messages.warning(request,"Your cart is empty")
+      return redirect("main:index")
