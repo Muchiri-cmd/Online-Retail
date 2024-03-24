@@ -1,33 +1,34 @@
 {% extends "base/base.html" %}
 {% block content%}
-        <div class="main-cart">
+        <div class="main-cart" id="async-cart">
             <div class="cart-items">
                 <div class="headers">
                     <span>Product</span><span>Unit Price</span><span>Quantity</span><span>SubTotal</span><span>Remove</span>
                 </div>
                 {% for product_id,item in cart_data.items%}
                 <div class="cart-item">
-                    <p>{{ item.product_title }}</p>
+                    
+                    <p class="cart-product"><img  class="cart-img" src="{{item.product_img}}" alt="">{{ item.product_title }}</p>
                     <p>${{ item.product_price }}</p>
                     <p>{{ item.product_qty }}</p>
                     <p>${% widthratio item.product_price 1 item.product_qty %} </p>
-                    <span><i class="fas fa-trash"></i></span>
+                    <span class="delete-product" data-product={{product_id}}><i class="fas fa-trash"></i></span>
                 </div>
 
                 {%endfor%}
             </div>
             <div class="checkout-options">
-                <p>SubTotal: ${{cart_total_amount}} </p>
-                <p>Shipping: $ 100</p>
-                <p>Address: St Louis</p>
-                <p>Total: ${{ cart_total_amount|add:"100" }}</p>
+                <p>SubTotal:<span class="receipt-values" > ${{cart_total_amount}} </span></p>
+                <p>Shipping: <span class="receipt-values"> $ 100</span></p>
+                <!--<p>Address: <span class="receipt-values"> St Louis</span></p>-->
+                <p>Total: <span class="receipt-values"> ${{ cart_total_amount|add:"100" }}</span></p>
                 <button>Checkout <i class="fas fa-arrow-right"></i></button>
+            </div></span>
+          
+            <div class="cart-functionality">
+                <button><i class="fas fa-arrow-left"></i>Continue Shopping</button>
+                <button><i class="fas fa-refresh"></i>Update Cart</button>
             </div>
-            <!--{{item}}-->
-
         </div>
-        <div class="cart-functionality">
-            <button><i class="fas fa-arrow-left"></i>Continue Shopping</button>
-            <button><i class="fas fa-refresh"></i>Update Cart</button>
-        </div>
+       
 {%endblock content%}

@@ -491,9 +491,6 @@ button{
     grid-template-columns: 3fr 1fr;
     margin:2em;
 }
-.cart-items{
-    height:400px;
-}
 .headers{
     background-color:whitesmoke;
     padding:1em 0em;
@@ -503,19 +500,39 @@ button{
 .cart-item{
     display: flex;
     min-width:200px;
-    border-bottom:1px solid grey;
-    padding:1em;
+    border-bottom:1px solid #cbd5e1;
+    padding:.2em;
     justify-content: space-between;
+    align-items: center;
+}
+.cart-item:nth-child(odd){
+    background-color: whitesmoke;
 }
 .checkout-options{
-    height:250px;
+    height:auto;
     padding:1em;
     margin:0em 2em;
 }
+.checkout-options p{
+    padding:.5em;
+    border-bottom: 1px solid #cbd5e1;
+}
 .cart-functionality{
-    height:50px;
     padding:1em;
 }
 .cart-functionality button{
     margin-right:4em;
+}
+.cart-product{
+    display: flex;
+    flex-direction: column;
+}
+.cart-img{
+    height:5em;
+    width:4em;
+}
+.receipt-values{
+    color:#fdba74;
+    font-weight:bold;
+    font-size:1.3em;
 }

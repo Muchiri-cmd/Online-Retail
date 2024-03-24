@@ -164,6 +164,7 @@ def add_to_cart(request):
       'product_title':request.GET['productTitle'],
       'product_price':request.GET['productPrice'],
       'product_qty':request.GET.get('qty'),
+      'product_img':request.GET.get('productImage'),
    }
 
    if 'cart_data_obj' in request.session:
@@ -187,7 +188,26 @@ def view_cart(request):
    if 'cart_data_obj' in request.session:
       for product_id,item in request.session['cart_data_obj'].items():
          cart_total_amount+=int(item['product_qty']) * float(item['product_price'])
-         return render(request,"main/cart.html",{"cart_data":request.session['cart_data_obj'],'totalcartitems':len(request.session['cart_data_obj']),'cart_total_amount':cart_total_amount})
+         return render(request,"main/cart.html",{"cart_data":request.session['cart_data_obj'],
+                                                 'totalcartitems':len(request.session['cart_data_obj']),'cart_total_amount':cart_total_amount})
    else:
       messages.warning(request,"Your cart is empty")
       return redirect("main:index")
+   
+def delete_cart_item(request):
+   product_id=str(request.GET['id'])
+   if 'cart_data_obj' in request.session:
+      if product_id in request.session['cart_data_obj']:
+         cart_data=request.session['cart_data_obj']
+         del request.session['cart_data_obj'][product_id]
+         request.session['cart_data_obj']=cart_data
+
+   cart_total_amount=0
+   if 'cart_data_obj' in request.session:
+      for product_id,item in request.session['cart_data_obj'].items():
+         cart_total_amount+=int(item['product_qty']) * float(item['product_price'])
+
+   context=render_to_string("main/async/cart-items.html",{"cart_data":request.session['cart_data_obj'],
+                                                 'totalcartitems':len(request.session['cart_data_obj']),'cart_total_amount':cart_total_amount})
+   
+   return JsonResponse({"data":context,'totalcartitems':len(request.session['cart_data_obj'])})
