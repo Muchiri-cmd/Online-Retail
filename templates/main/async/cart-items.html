@@ -5,7 +5,6 @@
         </div>
         {% for product_id,item in cart_data.items%}
         <div class="cart-item">
-            
             <p class="cart-product"><img  class="cart-img" src="{{item.product_img}}" alt="">{{ item.product_title }}</p>
             <p>${{ item.product_price }}</p>
             <p>{{ item.product_qty }}</p>
@@ -24,7 +23,7 @@
     </div></span>
   
     <div class="cart-functionality">
-        <button><i class="fas fa-arrow-left"></i>Continue Shopping</button>
-        <button><i class="fas fa-refresh"></i>Update Cart</button>
+        <a href="{%url 'main:products' %}"><button><i class="fas fa-arrow-left"></i>Continue Shopping</button></a>
+        
     </div>
 </div>

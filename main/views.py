@@ -188,7 +188,7 @@ def view_cart(request):
    if 'cart_data_obj' in request.session:
       for product_id,item in request.session['cart_data_obj'].items():
          cart_total_amount+=int(item['product_qty']) * float(item['product_price'])
-         return render(request,"main/cart.html",{"cart_data":request.session['cart_data_obj'],
+      return render(request,"main/cart.html",{"cart_data":request.session['cart_data_obj'],
                                                  'totalcartitems':len(request.session['cart_data_obj']),'cart_total_amount':cart_total_amount})
    else:
       messages.warning(request,"Your cart is empty")
@@ -211,3 +211,4 @@ def delete_cart_item(request):
                                                  'totalcartitems':len(request.session['cart_data_obj']),'cart_total_amount':cart_total_amount})
    
    return JsonResponse({"data":context,'totalcartitems':len(request.session['cart_data_obj'])})
+

@@ -520,9 +520,6 @@ button{
 .cart-functionality{
     padding:1em;
 }
-.cart-functionality button{
-    margin-right:4em;
-}
 .cart-product{
     display: flex;
     flex-direction: column;
