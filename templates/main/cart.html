@@ -1,8 +1,33 @@
 {% extends "base/base.html" %}
 {% block content%}
-    {%for product_id, item in cart_data.items%}
-        <div>
-            {{item}}
+        <div class="main-cart">
+            <div class="cart-items">
+                <div class="headers">
+                    <span>Product</span><span>Unit Price</span><span>Quantity</span><span>SubTotal</span><span>Remove</span>
+                </div>
+                {% for product_id,item in cart_data.items%}
+                <div class="cart-item">
+                    <p>{{ item.product_title }}</p>
+                    <p>${{ item.product_price }}</p>
+                    <p>{{ item.product_qty }}</p>
+                    <p>${% widthratio item.product_price 1 item.product_qty %} </p>
+                    <span><i class="fas fa-trash"></i></span>
+                </div>
+
+                {%endfor%}
+            </div>
+            <div class="checkout-options">
+                <p>SubTotal: ${{cart_total_amount}} </p>
+                <p>Shipping: $ 100</p>
+                <p>Address: St Louis</p>
+                <p>Total: ${{ cart_total_amount|add:"100" }}</p>
+                <button>Checkout <i class="fas fa-arrow-right"></i></button>
+            </div>
+            <!--{{item}}-->
+
         </div>
-    {%endfor%}
+        <div class="cart-functionality">
+            <button><i class="fas fa-arrow-left"></i>Continue Shopping</button>
+            <button><i class="fas fa-refresh"></i>Update Cart</button>
+        </div>
 {%endblock content%}

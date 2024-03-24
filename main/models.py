@@ -139,7 +139,7 @@ class Cart(models.Model):
 
     user=models.ForeignKey(User,on_delete=models.CASCADE)
     class Meta:
-        verbose_name_plural='Cart'
+        verbose_name_plural='Cart Orders'
 
 class CartItem(models.Model):
     order=models.ForeignKey(Cart,on_delete=models.CASCADE)

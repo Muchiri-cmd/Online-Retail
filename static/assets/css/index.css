@@ -486,3 +486,36 @@ button{
 .filters-section.visible {
     display: grid;
 }
+.main-cart{
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    margin:2em;
+}
+.cart-items{
+    height:400px;
+}
+.headers{
+    background-color:whitesmoke;
+    padding:1em 0em;
+    display: flex;
+    justify-content: space-between;
+}
+.cart-item{
+    display: flex;
+    min-width:200px;
+    border-bottom:1px solid grey;
+    padding:1em;
+    justify-content: space-between;
+}
+.checkout-options{
+    height:250px;
+    padding:1em;
+    margin:0em 2em;
+}
+.cart-functionality{
+    height:50px;
+    padding:1em;
+}
+.cart-functionality button{
+    margin-right:4em;
+}

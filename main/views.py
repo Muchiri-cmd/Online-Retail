@@ -157,6 +157,7 @@ def filter_products(request):
    })
 
 def add_to_cart(request):
+   
    cart_product={}
 
    cart_product[str(request.GET['productId'])]={
@@ -177,6 +178,7 @@ def add_to_cart(request):
          request.session['cart_data_obj']=cart_data
    else:
       request.session['cart_data_obj']=cart_product
+
 
    return JsonResponse({"data":request.session['cart_data_obj'],'cart_count':len(request.session['cart_data_obj'])})
 
