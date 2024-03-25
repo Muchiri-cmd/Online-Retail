@@ -25,6 +25,11 @@ RATING=(
     (5,"★★★★★"),
 )
 
+PAYMENT_METHOD=(
+    ("dbt","Direct Bank Transfer"),
+    ("cod","Cash On Delivery"),
+)
+
 def user_dir_path(instance,filename):
     return 'user_{0}/{1}'.format(instance.user.id,filename)
 
@@ -131,25 +136,27 @@ class ProductReview(models.Model):
     def get_rating(self):
         return self.rating
     
-class Cart(models.Model):
-    price=models.DecimalField(max_digits=999999999,decimal_places=2)
-    date_added=models.DateTimeField(auto_now_add=True)
-    paid_status=models.BooleanField(default=False)
-    product_status=models.CharField(choices=STATUS,max_length=30,default="published")
-
+class Order(models.Model):
+    order_total_price=models.DecimalField(max_digits=999999999,decimal_places=2)
+    date_ordered=models.DateTimeField(auto_now_add=True)
     user=models.ForeignKey(User,on_delete=models.CASCADE)
+    name=models.CharField(max_length=200)
+    email=models.CharField(max_length=200)
+    shipping_address=models.CharField(max_length=200)
+    phone=models.CharField(max_length=200)
+    payment_method=models.CharField(max_length=200,choices=PAYMENT_METHOD)
+    
     class Meta:
         verbose_name_plural='Cart Orders'
 
 class CartItem(models.Model):
-    order=models.ForeignKey(Cart,on_delete=models.CASCADE)
-    product_status=models.CharField(choices=STATUS,max_length=30,default='published')
+    order=models.ForeignKey(Order,on_delete=models.CASCADE)
     item=models.CharField(max_length=200)
     image=models.CharField(max_length=200)
     quantity=models.IntegerField(default=1)
     price=models.DecimalField(max_digits=999999999,decimal_places=2)
     total=models.DecimalField(max_digits=999999999,decimal_places=2)
-    invoice_no=models.CharField(max_length=200)
+    invoice_no=models.CharField(max_length=200,null=True)
 
     def cart_image(self):
         return mark_safe('<img src="/media/%s" width="50" height="50" />' % (self.image))

@@ -222,3 +222,37 @@ def view_checkout(request):
    else:
       messages.warning(request,"Your cart is empty")
       return redirect("main:index")
+
+def order(request):
+   if request.POST:
+      name=request.POST['f-name']
+      email=request.POST['email']
+      phone=request.POST['phone']
+      shipping_address=request.POST['shipping_address']
+      payment_method=request.POST['payment-method']
+
+   total_amount=0
+   if 'cart_data_obj' in request.session:
+         for product_id, item in request.session['cart_data_obj'].items():
+            total_amount += int(item['product_qty']) * float(item['product_price'])
+         order=Order.objects.create(
+            user=request.user,
+            order_total_price=total_amount+200,
+            name=name,
+            email=email,
+            shipping_address=shipping_address,
+            payment_method=payment_method,
+            phone=phone,
+         )
+         for product_id,item in request.session['cart_data_obj'].items():
+            CartItem.objects.create(
+               order=order,
+               item=item['product_title'],
+               image=item['product_img'],
+               quantity=item['product_qty'],
+               price=item['product_price'],
+               total=float(item['product_qty']) * float(item['product_price'])
+            )
+   
+   del request.session['cart_data_obj']
+   return redirect("main:index")

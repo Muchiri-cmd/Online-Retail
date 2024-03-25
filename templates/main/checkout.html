@@ -1,34 +1,35 @@
 {%extends 'base/base.html'%}
 {%block content%}
     {%load static %}
-    <div class="main-checkout">
+    <form class="main-checkout" method="POST" action="/order/">
+        {% csrf_token %}
         <div class="checkout-details">
             <h3>Checkout details</h3>
-            <form method="post" class="form">
+            <div class="checkout-form">
                 <fieldset>
                     <label for="f-name">First Name: </label>
-                    <input type="text" id="f-name" placeholder="First Name">
+                    <input type="text" id="f-name" name='name' required placeholder="First Name">
                 </fieldset>
                 <fieldset>
                     <label for="l-name">Last Name:</label>
-                    <input type="text" id="l-name" placeholder="Last Name">
+                    <input type="text" id="l-name" required placeholder="Last Name">
                 </fieldset>
                 <fieldset>
                     <label for="phone">Phone Number:</label>
-                    <input type="tel" id="phone" placeholder="phone-number">
+                    <input type="tel" id="phone" name='phone' required placeholder="phone-number">
                 </fieldset>
                 <fieldset>
                     <label for="email">E-Mail:</label>
-                    <input type="email" id="email" required placeholder="email">
+                    <input type="email" id="email" name='email' required placeholder="email">
                 </fieldset>
                 <fieldset>
                     <legend>Select Your Shipping Address</legend>
-                    <select name="adress" id="">
+                    <select name="adress" id="address">
                         <option value="">Address 1</option>
                     </select>
                     
                 </fieldset>   
-            </form>
+            </div>
             
         </div>
         <div class="order">
@@ -41,31 +42,31 @@
                     <div class="cart-item">
                         <p class="cart-product"><img  class="cart-img" src="{{item.product_img}}" alt="">{{ item.product_title }}</p>
                         <p>{{ item.product_qty }}</p>
-                        <p>${% widthratio item.product_price 1 item.product_qty %} </p>
+                        <p>{% widthratio item.product_price 1 item.product_qty %} </p>
                     </div>
                     {%endfor%}
-                    <a href="{%url 'main:view-cart' %}"><button><i class="fas fa-arrow-left"></i>Review Cart</button></a>
+                    <a href="{%url 'main:view-cart' %}"><i class="fas fa-arrow-left"></i>Review Cart</a>
                 </div>
                 <div class="checkout-options">
-                    <p>SubTotal:<span class="receipt-values" > ${{cart_total_amount}} </span></p>
-                    <p>Shipping: <span class="receipt-values"> $ 100</span></p>
+                    <p>SubTotal:<span class="receipt-values" >  {{cart_total_amount}} </span></p>
+                    <p>Shipping: <span class="receipt-values">  200</span></p>
                     <!--<p>Address: <span class="receipt-values"> St Louis</span></p>-->
-                    <p>Total: <span class="receipt-values"> ${{ cart_total_amount|add:"100" }}</span></p>
+                    <p>Total: <span class="receipt-values"> {{ cart_total_amount|add:"200" }}</span></p>
                     <div class="checkout-payment">
                         <h3>Payment</h3>
                         <div class="payment-options">
                             <div class="radio-option">
-                                <input required type="radio" name="payment_option" id="dbt">
+                                <input required type="radio" name="payment_option" id="dbt" value="direct_bank_transfer">
                                 <label for="dbt">Direct Bank Transfer</label>
                             </div>
                             <div class="radio-option">
-                                <input  required type="radio" name="payment_option" id="cod">
+                                <input  required type="radio" name="payment_option" id="cod" value="cash_on_delivery">
                                 <label  for="cod">Cash on delivery</label>
                             </div>
                         </div>
                         <div class="payments-logo">
                             <img src="{% static 'assets/imgs/theme/payment-method.png' %}" alt="" />
-                            <button>Place an Order <i class="fa-solid fa-truck-fast"></i></button>
+                            <a href="{%url 'main:order' %}"><button>Place an Order <i class="fa-solid fa-truck-fast"></i></button></a>
                         </div>
                         
                     </div>
@@ -73,8 +74,8 @@
             </div>
         </div>
         <div class="cart-functionality">
-            <a href="{%url 'main:products' %}"><button><i class="fas fa-arrow-left"></i>Continue Shopping</button></a>
+            <a href="{%url 'main:products' %}"><i class="fas fa-arrow-left"></i>Continue Shopping</a>
         </div>
        
-    </div>
+    </form>
 {%endblock content%}

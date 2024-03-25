@@ -17,16 +17,16 @@ class ProductAdmin(admin.ModelAdmin):
 class ReviewAdmin(admin.ModelAdmin):
     list_display=['product','review','rating','user','date_added']
 
-class CartAdmin(admin.ModelAdmin):
-    list_display=['price','date_added','paid_status','product_status']
+class OrderAdmin(admin.ModelAdmin):
+    list_display=['user','order_total_price','date_ordered','name','shipping_address','payment_method','phone']
 
 class CartItemAdmin(admin.ModelAdmin):
-    list_display=['order','product_status','item','image','quantity','price','total','invoice_no']
+    list_display=['order','item','image','quantity','price','total','invoice_no']
 
 admin.site.register(Category,CategoryAdmin)
 admin.site.register(Retailer,RetailerAdmin)
 admin.site.register(ProductImages,ProductImagesAdmin)
 admin.site.register(Product,ProductAdmin)
 admin.site.register(ProductReview,ReviewAdmin)
-admin.site.register(Cart,CartAdmin)
+admin.site.register(Order,OrderAdmin)
 admin.site.register(CartItem,CartItemAdmin)
