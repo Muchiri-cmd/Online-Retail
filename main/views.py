@@ -212,3 +212,13 @@ def delete_cart_item(request):
    
    return JsonResponse({"data":context,'totalcartitems':len(request.session['cart_data_obj'])})
 
+def view_checkout(request):
+   cart_total_amount=0
+   if 'cart_data_obj' in request.session:
+      for product_id,item in request.session['cart_data_obj'].items():
+         cart_total_amount+=int(item['product_qty']) * float(item['product_price'])
+      return render(request,"main/checkout.html",{"cart_data":request.session['cart_data_obj'],
+                                                 'totalcartitems':len(request.session['cart_data_obj']),'cart_total_amount':cart_total_amount})
+   else:
+      messages.warning(request,"Your cart is empty")
+      return redirect("main:index")

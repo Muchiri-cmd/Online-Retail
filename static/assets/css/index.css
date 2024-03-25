@@ -533,3 +533,33 @@ button{
     font-weight:bold;
     font-size:1.3em;
 }
+.main-checkout{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.checkout-details{
+    padding:2em;
+    border:1px solid #cbd5e1;
+    border-radius:10px;
+    margin:1em;
+}
+.form{
+    display: flex;
+    flex-wrap: wrap;
+    gap:2em;
+}
+input{
+    padding:.5em;
+    border-radius:10px;
+}
+select{
+    padding:1em;
+    border-radius:10px;
+    width:15em;
+}
+.payments-logo{
+    padding:1em;
+    display: flex;
+    flex-direction: column;
+    gap:1em;
+}

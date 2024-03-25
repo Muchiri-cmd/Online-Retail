@@ -1,6 +1,8 @@
 {% extends "base/base.html" %}
 {% block content%}
         <div class="main-cart" id="async-cart">
+            <h1>Cart</h1>
+            <p>You have {{request.session.cart_data_obj|length}} items in your cart</p>
             <div class="cart-items">
                 <div class="headers">
                     <span>Product</span><span>Unit Price</span><span>Quantity</span><span>SubTotal</span><span>Remove</span>
@@ -18,10 +20,8 @@
             </div>
             <div class="checkout-options">
                 <p>SubTotal:<span class="receipt-values" > ${{cart_total_amount}} </span></p>
-                <p>Shipping: <span class="receipt-values"> $ 100</span></p>
-                <!--<p>Address: <span class="receipt-values"> St Louis</span></p>-->
-                <p>Total: <span class="receipt-values"> ${{ cart_total_amount|add:"100" }}</span></p>
-                <button>Checkout <i class="fas fa-arrow-right"></i></button>
+               
+                <a href="{%url 'main:checkout' %}"><button>Checkout <i class="fas fa-arrow-right"></i></button></a>
             </div></span>
           
             <div class="cart-functionality">
