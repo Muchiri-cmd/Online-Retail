@@ -144,7 +144,7 @@ class Order(models.Model):
     email=models.CharField(max_length=200)
     shipping_address=models.CharField(max_length=200)
     phone=models.CharField(max_length=200)
-    payment_method=models.CharField(max_length=200,choices=PAYMENT_METHOD)
+    payment_method=models.CharField(max_length=200,choices=PAYMENT_METHOD,default="dbt")
     
     class Meta:
         verbose_name_plural='Cart Orders'

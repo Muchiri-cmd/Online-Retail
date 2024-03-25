@@ -225,11 +225,12 @@ def view_checkout(request):
 
 def order(request):
    if request.POST:
-      name=request.POST['f-name']
+      name=request.POST['name']
       email=request.POST['email']
       phone=request.POST['phone']
-      shipping_address=request.POST['shipping_address']
-      payment_method=request.POST['payment-method']
+      shipping_address=request.POST['address']
+      payment_method=request.POST.get('payment_option')
+      print(payment_method)
 
    total_amount=0
    if 'cart_data_obj' in request.session:
@@ -255,4 +256,7 @@ def order(request):
             )
    
    del request.session['cart_data_obj']
-   return redirect("main:index")
+   return redirect("main:products")
+
+def order_history(request):
+   return None
