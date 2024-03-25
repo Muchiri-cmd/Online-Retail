@@ -164,7 +164,7 @@ def add_to_cart(request):
       'product_title':request.GET['productTitle'],
       'product_price':request.GET['productPrice'],
       'product_qty':request.GET.get('qty'),
-      'product_img':request.GET.get('productImage'),
+      'product_img':request.GET.get('productImage',''),
    }
 
    if 'cart_data_obj' in request.session:

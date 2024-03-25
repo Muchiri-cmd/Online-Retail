@@ -71,7 +71,8 @@ $(".add-to-cart-btn").on("click", function () {
     let qty = productCard.find(".product-quantity").val();
     let productPrice = parseFloat(productCard.find(".current-price").text());
     let productTitle = productCard.find(".product-title").val();
-    let productImage = productCard.find(".product-img img").attr("src");
+    let productImage =$(".product-img .product-image").attr("src");
+
 
     let thisVal = $(this);
 
