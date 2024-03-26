@@ -8,10 +8,8 @@ class CategoryAdmin(admin.ModelAdmin):
 class RetailerAdmin(admin.ModelAdmin):
     list_display=['title','retailer_image','rating','user','date']
 
-class ProductImagesAdmin(admin.ModelAdmin):
-    model=ProductImages
+
 class ProductAdmin(admin.ModelAdmin):
-    inline=[ProductImagesAdmin]
     list_display=['title','product_image','sale_price','category','retailer','featured','product_status']
 
 class ReviewAdmin(admin.ModelAdmin):
@@ -25,7 +23,6 @@ class CartItemAdmin(admin.ModelAdmin):
 
 admin.site.register(Category,CategoryAdmin)
 admin.site.register(Retailer,RetailerAdmin)
-admin.site.register(ProductImages,ProductImagesAdmin)
 admin.site.register(Product,ProductAdmin)
 admin.site.register(ProductReview,ReviewAdmin)
 admin.site.register(Order,OrderAdmin)

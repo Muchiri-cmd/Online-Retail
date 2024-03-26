@@ -107,18 +107,6 @@ class Product(models.Model):
         #Get discounted prices
         discount=((self.base_price-self.sale_price)/self.base_price) * 100
         return discount
-
-class ProductImages(models.Model):
-    #Allow addition of multiple images for a product
-    images=models.ImageField(upload_to='product-imgs')
-    product=models.ForeignKey(Product,null=True,on_delete=models.CASCADE,related_name="product_images")
-
-    class Meta:
-        verbose_name_plural="Product Images"
-    
-
-
-    #User model
         
 class ProductReview(models.Model):
     user=models.ForeignKey(User,on_delete=models.SET_NULL,null=True)
