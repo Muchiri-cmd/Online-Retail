@@ -3,20 +3,11 @@
 {%block content%}
 
 <div class="pdtdetail-container">
-
     <div class="product-detail-card">
         <div class="img-container product-img">
-            <img class="product-image product-detail-image" src="{{product.image.url}}" alt="">
-        </div>
-        <div class="imgs-container">
-            <img src="{{product.image.url}}" alt="">
-            <img src="{{product.image.url}}" alt="">
-            <img src="{{product.image.url}}" alt="">
-            <img src="{{product.image.url}}" alt="">
+            <img class="product-image  product-detail-image" src="{{product.image.url}}" alt="">
         </div>
     </div>
-    
-    
     
     <div class="product-details">
         <div class="title-price">
@@ -26,6 +17,9 @@
             <span class="current-price">{{product.sale_price}}</span>
         </div>
         <div class="product-purchase product-card">
+            <div class="product-img" style="display:none">
+                <img class="product-image" src="{{product.image.url}}" alt="">
+            </div>
             <span style="display:none" class="current-price">{{product.sale_price}}</span>
             <input type="number" value="1" class="product-quantity">
             <input type="hidden" value={{product.id}} class="product-id" name="" id="">
@@ -39,7 +33,6 @@
             <span>Stock Status: {{product.stock_status}}</span>
         </div>
     </div>
-       
    
     <div class="aside">
         <div class="delivery-card">

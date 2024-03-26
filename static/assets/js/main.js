@@ -66,13 +66,12 @@ $(document).ready(function () {
 
 //ADD ITEMS TO CART
 $(".add-to-cart-btn").on("click", function () {
-    let productCard = $(this).closest('.product-card');
+    let productCard = $(this).closest('.product-card, .product-detail-card');
     let productId = productCard.find(".product-id").val();
     let qty = productCard.find(".product-quantity").val();
     let productPrice = parseFloat(productCard.find(".current-price").text());
     let productTitle = productCard.find(".product-title").val();
-    let productImage =$(".product-img .product-image").attr("src");
-
+    let productImage = productCard.find(".product-img .product-image").attr("src");
 
     let thisVal = $(this);
 
