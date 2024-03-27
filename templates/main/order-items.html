@@ -1,0 +1,55 @@
+{% extends "base/base.html" %}
+{% load static%}
+{% block content%}
+        <div class="main-receipt">
+            <div class="invoice-header">
+                <div class="logo">
+                    <img id="header-img" src="{% static 'assets/imgs/theme/justshop.jpeg' %}" alt="JustShop-Logo">
+                    <h1>Invoice</h1>
+                </div>
+                <div class="co-details">
+                    <ul class="contact-info">
+                        <li><i class="fas fa-location"></i><strong>Address: </strong> <span>1300 Koinange Street</span></li>
+                        <li><i class="fas fa-phone"></i><strong>Call Us: </strong><span>(+254) -113708866</span></li>
+                        <li><i class="fas fa-envelope"></i><strong>Email: </strong><span><a href="mailto:davismuchiri21@gmail.com">JustShop@gmail.com</a></span></li>
+                    </ul>
+    
+                </div>
+            </div>
+            
+            <div class="receipt-details">
+                <div class="left">
+                    <p>Order Id: {{order.id}}</p>
+                    <p>Order Name:{{order.name}}</p>
+                    <p>Order Address: {{order.shipping_address}}</p>
+                </div>
+                <div class="right">
+                    <p>Date Ordered:{{order.date_ordered}}</p>
+                    
+                </div>
+            </div>
+            <div class="cart-items">
+                <div class="headers">
+                    <span>Product</span><span>Unit Price</span><span>Quantity</span><span>Amount</span>
+                </div>
+                {% for item in cartitems %}
+                <div class="cart-item">
+                    <p class="cart-product"><img  class="cart-img" src="{{item.image}}" alt="">{{ item.title }}</p>
+                    <p>{{ item.price }}</p>
+                    <p>{{ item.quantity }}</p>
+                    <p>{{ item.total }} </p>
+                </div>
+
+                {%endfor%}
+                <div class="receipt-footer">
+                    <div class="notes">
+                        <h5>Thanks for shopping with us </h5>
+                    </div>
+                    <div class="total">
+                        <h4>Total:{{order.order_total_price}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+{%endblock content%}

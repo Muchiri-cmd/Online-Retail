@@ -9,7 +9,6 @@ from decimal import Decimal
 from django.contrib import messages
 
 # Create your views here.
-@login_required
 def index_view(request):
    products=Product.objects.filter(featured=True,product_status="published")
    categories=Category.objects.all()
@@ -78,7 +77,7 @@ def product_view(request,product_id):
       "make_review":make_review,
    }
    return render(request,'main/product_detail.html',context)
-
+@login_required
 def make_review(request,product_id):
    product=Product.objects.get(id=product_id)
    
@@ -155,7 +154,7 @@ def filter_products(request):
         "data":data,
 
    })
-
+@login_required
 def add_to_cart(request):
    
    cart_product={}
@@ -182,7 +181,7 @@ def add_to_cart(request):
 
 
    return JsonResponse({"data":request.session['cart_data_obj'],'cart_count':len(request.session['cart_data_obj'])})
-
+@login_required
 def view_cart(request):
    cart_total_amount=0
    if 'cart_data_obj' in request.session:
@@ -193,7 +192,7 @@ def view_cart(request):
    else:
       messages.warning(request,"Your cart is empty")
       return redirect("main:index")
-   
+@login_required   
 def delete_cart_item(request):
    product_id=str(request.GET['id'])
    if 'cart_data_obj' in request.session:
@@ -211,7 +210,7 @@ def delete_cart_item(request):
                                                  'totalcartitems':len(request.session['cart_data_obj']),'cart_total_amount':cart_total_amount})
    
    return JsonResponse({"data":context,'totalcartitems':len(request.session['cart_data_obj'])})
-
+@login_required
 def view_checkout(request):
    cart_total_amount=0
    if 'cart_data_obj' in request.session:
@@ -222,7 +221,7 @@ def view_checkout(request):
    else:
       messages.warning(request,"Your cart is empty")
       return redirect("main:index")
-
+@login_required
 def order(request):
    if request.POST:
       name=request.POST['name']
@@ -256,7 +255,25 @@ def order(request):
             )
    
    del request.session['cart_data_obj']
-   return redirect("main:products")
+   return redirect("main:order-history")
 
+@login_required
 def order_history(request):
-   return None
+   orders=Order.objects.filter(user=request.user)
+   if orders:
+   
+      context={
+         "orders":orders,
+      }
+      return render(request,'main/order-history.html',context)
+   else:
+      messages.error("You dont have any completed orders")
+      return redirect("main:products")
+@login_required
+def order_items(request,order_id):
+   order=Order.objects.get(id=order_id)
+   cartitems=CartItem.objects.filter(order_id=order_id)
+   context={
+      "cartitems":cartitems,
+      "order":order}
+   return render(request,'main/order-items.html',context)
