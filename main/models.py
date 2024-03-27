@@ -107,6 +107,9 @@ class Product(models.Model):
         #Get discounted prices
         discount=((self.base_price-self.sale_price)/self.base_price) * 100
         return discount
+    
+    def __str__(self):
+        return self.title
         
 class ProductReview(models.Model):
     user=models.ForeignKey(User,on_delete=models.SET_NULL,null=True)
@@ -147,15 +150,13 @@ class CartItem(models.Model):
     def cart_image(self):
         return mark_safe('<img src="/media/%s" width="50" height="50" />' % (self.image))
 
+class Wishlist(models.Model):
+    product=models.ForeignKey(Product,on_delete=models.SET_NULL,null=True)
+    user=models.ForeignKey(User,on_delete=models.SET_NULL,null=True)
+    date_added=models.DateTimeField(auto_now_add=True)
 
-
-
-
-
-
-
-
-
+    def __str__(self):
+        return self.product.title
 
 
 

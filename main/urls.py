@@ -20,7 +20,8 @@ urlpatterns = [
     path('checkout/',view_checkout,name="checkout"),
     path('order/',order,name="order"),
     path('order_history/',order_history,name="order-history"),
-    path('order-items/<order_id>/',order_items,name="order-items")
-   
+    path('order-items/<order_id>/',order_items,name="order-items"),
+    path('wishlist',wishlist_view,name="wishlist"),
+    path('add-to-wishlist',add_to_wishlist,name="add-to-wishlist")
 
 ]

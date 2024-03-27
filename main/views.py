@@ -277,3 +277,31 @@ def order_items(request,order_id):
       "cartitems":cartitems,
       "order":order}
    return render(request,'main/order-items.html',context)
+
+def add_to_wishlist(request):
+   product_id=request.GET['product_id']
+   product=Product.objects.get(id=product_id)
+   context={
+   }
+   wishlist_count=Wishlist.objects.filter(product=product,user=request.user).count()
+   if wishlist_count > 0:
+      context={
+         "bool":False
+      }
+   else:
+      new_wishlist=Wishlist.objects.create(
+         product=product,
+         user=request.user
+      )
+      context={
+         "bool":True
+      }
+   return JsonResponse(context)
+
+
+def wishlist_view(request):
+   wishlist_items=Wishlist.objects.filter(user=request.user)
+   context={
+      "wishlist_items":wishlist_items
+   }
+   return render(request,'main/wishlist.html',context)

@@ -1,0 +1,22 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% block content %}
+<div class="products-container wishlist">
+    {% for item in wishlist_items %}
+        <div class="product-card wishlist">
+            <div class="product-img">
+                <img class="product-image" src="{{ item.product.image.url }}" alt="">
+            </div>
+            <div class="product-info wishlist">
+                <a href=""><h5>{{ item.product.title }}</h5></a>
+                <input type="hidden" value={{item.product.id}} class="product-id" name="" id="">
+                <input type="hidden" value={{item.product.title}} class="product-title" name="" id="">
+                <span class="price current-price">{{item.product.sale_price }}</span>
+                <input type="number" value="1" class="product-quantity">
+                <button type="submit" class="add-to-cart-btn"><i class="fas fa-cart-plus"></i>Move to Cart</button>
+                <button type="submit" class=""><i class="fas fa-remove"></i>Remove</button>
+            </div>              
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

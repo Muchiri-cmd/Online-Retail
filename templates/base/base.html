@@ -33,12 +33,13 @@
                 <a href=""><li></i>Contact Us</li></a>
             </ul>
             <ul class="account-links">
-                <li><a href=""><i class="fas fa-heart"></i>Wishlist</a></li>
+                <li><span class="cart-count">{{wishlist}}</span><a href="{%url 'main:wishlist' %}"><i class="fas fa-heart"></i>Wishlist</a></li>
                 <li><span class="cart-count">{{request.session.cart_data_obj|length}}</span><a href="{% url 'main:view-cart' %}"><i class="fas fa-cart-plus"></i>Cart</a></li>
                 <li class="dropdown">
                     <a href="#"><i class="fas fa-user"></i>Account</a>
                     <ul class="dropdown-menu">
                         <li><a href="{% url 'main:order-history' %}"><i class="fa-solid fa-list"></i>Orders</a></li>
+                        <li><a href="{% url 'UsersApp:signin' %}"><i class="fas fa-sign-in-alt"></i>Login</a></li>
                         <li><a href="{% url 'UsersApp:logout' %}"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
                        
                     </ul>

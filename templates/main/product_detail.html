@@ -25,7 +25,7 @@
             <input type="hidden" value={{product.id}} class="product-id" name="" id="">
             <input type="hidden" value={{product.title}} class="product-title" name="" id="">
             <button type="submit" class="add-to-cart-btn"><i class="fas fa-cart-plus"></i>Add to Cart</button>
-            <button><i class="fas fa-heart"></i></button>
+            <button class="add-to-wishlist" data-product-item="{{product.id}}"><i class="fas fa-heart"></i></button>
         </div>
         <div class="product-specs">
             <span>Type :{{product.category}}</span>
@@ -38,8 +38,7 @@
         <div class="delivery-card">
             <h3>Delivery</h3>
             <div class="address">
-                </p></span><i class="fas fa-location"></i><strong>Address: </strong> <span>User Delivery Address</span></p>
-                <a href=""><span style="color:orange;">Change</span></a>
+                </p></span><i class="fas fa-location"></i><strong>Address: </strong> <span>User Address</span></p>
             </div>
         </div>
         <div class="pdt-retailer-card">

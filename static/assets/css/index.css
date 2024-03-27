@@ -591,3 +591,30 @@ select{
     padding:2em;
     background-color:orange;
 }
+.wishlist-image{
+    width:200px;
+    height:200px;
+}
+.products-container.wishlist{
+    margin:auto;
+    width:80vw;
+    display:flex;
+    flex-wrap: wrap;   
+}
+.product-card.wishlist{
+    display: flex;
+    width:70vw;
+    justify-content: space-around;
+    margin-bottom:.2em;
+}
+.product-card.wishlist:hover{
+   transform: none;
+}
+.product-info.wishlist{
+    display:flex;
+    align-items: center;
+    padding:2em;
+}
+.product-info.wishlist *{
+    margin-right:2em;
+}

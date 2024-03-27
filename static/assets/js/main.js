@@ -98,7 +98,6 @@ $(".add-to-cart-btn").on("click", function () {
 
 })
 //DELETE PRODUCTS FROM CART
-// Delegate the event handler to a parent element that exists on the page initially
 $("#async-cart").on("click", ".delete-product", function () {
     let productId = $(this).attr("data-product");
     let thisVal = $(this);
@@ -118,6 +117,29 @@ $("#async-cart").on("click", ".delete-product", function () {
             console.log("deleted successfully");
             $(".cart-count").text(response.cart_count);
             $("#async-cart").html(response.data);
+        }
+    });
+});
+
+//ADD TO WISHLIST
+$(".add-to-wishlist").on('click', function () {
+    var product_id = $(this).attr('data-product-item');
+    var this_val = $(this);
+    console.log(product_id);
+
+    $.ajax({
+        url: "/add-to-wishlist",
+        data: {
+            product_id: product_id
+        },
+        dataType: 'json',
+        beforeSend: function () {
+            this_val.css('color','red')
+        },
+        success:function(response){
+            if (response.bool==true){
+                console.log("added")
+            }
         }
     });
 });
