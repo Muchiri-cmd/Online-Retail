@@ -138,8 +138,40 @@ $(".add-to-wishlist").on('click', function () {
         },
         success:function(response){
             if (response.bool==true){
+                var wishlistCount = parseInt($(".wish-count").text());
+                wishlistCount++;
+                $(".wish-count").text(wishlistCount);
+                $("#wishlist").html(response.data);
+    
                 console.log("added")
             }
+        }
+    });
+});
+
+$(".remove-wishitem").on('click', function() {
+    let this_val = $(this);
+    let id = $(this).attr("data-wishlist-product");
+    console.log(this_val);
+    console.log("wishlist id :", id);
+    let productCard = $(this).closest('.product-card');
+
+    $.ajax({
+        url: "/remove-from-wishlist",
+        data: {
+            "id": id,
+        },
+        dataType: "json",
+        beforeSend: function() {
+            console.log("Deleting wishlist item");
+        },
+        success: function(response) {
+            var wishlistCount = parseInt($(".wish-count").text());
+            wishlistCount--;
+            $(".wish-count").text(wishlistCount);
+
+            // Remove the product card from the DOM
+            productCard.remove();
         }
     });
 });

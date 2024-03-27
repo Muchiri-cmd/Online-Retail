@@ -22,6 +22,6 @@ urlpatterns = [
     path('order_history/',order_history,name="order-history"),
     path('order-items/<order_id>/',order_items,name="order-items"),
     path('wishlist',wishlist_view,name="wishlist"),
-    path('add-to-wishlist',add_to_wishlist,name="add-to-wishlist")
-
+    path('add-to-wishlist',add_to_wishlist,name="add-to-wishlist"),
+    path('remove-from-wishlist/',remove_from_wishlist,name='remove-from-wishlist'),
 ]

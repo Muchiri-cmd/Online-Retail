@@ -33,7 +33,7 @@
                 <a href=""><li></i>Contact Us</li></a>
             </ul>
             <ul class="account-links">
-                <li><span class="cart-count">{{wishlist}}</span><a href="{%url 'main:wishlist' %}"><i class="fas fa-heart"></i>Wishlist</a></li>
+                <li><span class="wish-count">{{wishlist}}</span><a href="{%url 'main:wishlist' %}"><i class="fas fa-heart"></i>Wishlist</a></li>
                 <li><span class="cart-count">{{request.session.cart_data_obj|length}}</span><a href="{% url 'main:view-cart' %}"><i class="fas fa-cart-plus"></i>Cart</a></li>
                 <li class="dropdown">
                     <a href="#"><i class="fas fa-user"></i>Account</a>

@@ -7,6 +7,7 @@ from .forms import *
 from django.template.loader import render_to_string
 from decimal import Decimal
 from django.contrib import messages
+from django.core import serializers
 
 # Create your views here.
 def index_view(request):
@@ -305,3 +306,17 @@ def wishlist_view(request):
       "wishlist_items":wishlist_items
    }
    return render(request,'main/wishlist.html',context)
+
+def remove_from_wishlist(request):
+    id = request.GET['id']
+    wishlist = Wishlist.objects.filter(user=request.user)
+    product=Wishlist.objects.get(id=id)
+    product.delete()
+    
+    context = {
+        "bool":True,
+        "wishlist": wishlist,
+    }
+    wishlist_json=serializers.serialize('json',wishlist)
+    data=render_to_string('main/async/wishlist.html',context)
+    return JsonResponse({'data': data,'wishlist_items':wishlist_json})
